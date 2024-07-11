@@ -1,9 +1,15 @@
 #backend
-/Backend/FoodDelivery/*.env
+/Backend/FoodDelivery/FoodDelivery.API/*.env
 /Backend/*.vs
 /Backend/FoodDelivery/bin
 /Backend/FoodDelivery/obj
 /Backend/FoodDelivery/*.idea
+/Backend/FoodDelivery/FoodDelivery.API/bin
+/Backend/FoodDelivery/FoodDelivery.API/obj
+/Backend/FoodDelivery/FoodDelivery.Core/bin
+/Backend/FoodDelivery/FoodDelivery.Core/obj
+/Backend/FoodDelivery/FoodDelivery.DataAccess/bin
+/Backend/FoodDelivery/FoodDelivery.DataAccess/obj
 
 #frontend
 # Logs
