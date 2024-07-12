@@ -14,7 +14,11 @@ builder.Services.AddDbContext<FoodDeliveryDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(FoodDeliveryDbContext)));
 });
+
 builder.Services.AddScoped<IFoodsRepository, FoodsRepository>();
+builder.Services.AddScoped<IUsersRepository, UsersRepository>();
+builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
+
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();

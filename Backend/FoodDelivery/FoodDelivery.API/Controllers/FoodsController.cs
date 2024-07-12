@@ -1,5 +1,6 @@
 using AutoMapper;
 using FoodDelivery.Contacts;
+using FoodDelivery.Contacts.Food;
 using FoodDelivery.Core.Abstractions;
 using FoodDelivery.Core.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -37,5 +38,26 @@ public class FoodsController : ControllerBase
         
         Guid id = await _repository.Create(food);
         return Ok(id);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult<Guid>> UpdateFood(Guid id, [FromBody] UpdateFoodRequest request)
+    {
+        Food food = new Food()
+        {
+            Id = id,
+            Name = request.Name,
+            Description = request.Description
+        };
+        
+        Guid response = await _repository.Update(food);
+        return Ok(response);
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<ActionResult<Guid>> DeleteFood(Guid id)
+    {
+        Guid response = await _repository.Delete(id);
+        return Ok(response);
     }
 }

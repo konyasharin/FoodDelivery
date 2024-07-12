@@ -1,9 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+namespace FoodDelivery.Contacts.Food;
 
-namespace FoodDelivery.Contacts;
-
-public class CreateFoodRequest
+public class GetFoodResponse
 {
+    public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
 }

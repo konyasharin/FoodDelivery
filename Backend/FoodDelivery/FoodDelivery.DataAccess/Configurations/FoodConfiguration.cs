@@ -12,6 +12,7 @@ public class FoodConfiguration : IEntityTypeConfiguration<Food>
         builder.Property(food => food.Name)
             .IsRequired()
             .HasMaxLength(16);
+        builder.HasIndex(food => food.Name).IsUnique();
         builder.Property(food => food.Description)
             .HasMaxLength(256);
     }
