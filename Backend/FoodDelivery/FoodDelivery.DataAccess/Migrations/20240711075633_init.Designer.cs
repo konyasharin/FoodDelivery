@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FoodDelivery.DataAccess.Migrations
 {
-    [DbContext(typeof(FoodStoreDbContext))]
+    [DbContext(typeof(FoodDeliveryDbContext))]
     [Migration("20240711075633_init")]
     partial class init
     {

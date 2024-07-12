@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FoodDelivery.DataAccess.Migrations
 {
-    [DbContext(typeof(FoodStoreDbContext))]
+    [DbContext(typeof(FoodDeliveryDbContext))]
     partial class FoodStoreDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

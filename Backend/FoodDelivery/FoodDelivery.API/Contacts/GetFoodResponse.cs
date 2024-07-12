@@ -1,6 +1,6 @@
-namespace FoodDelivery.DataAccess.Entities;
+namespace FoodDelivery.Contacts;
 
-public class FoodEntity
+public class GetFoodResponse
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;

@@ -1,14 +1,18 @@
-using FoodDelivery.DataAccess.Entities;
+using FoodDelivery.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FoodDelivery.DataAccess.Configurations;
 
-public class FoodConfiguration : IEntityTypeConfiguration<FoodEntity>
+public class FoodConfiguration : IEntityTypeConfiguration<Food>
 {
-    public void Configure(EntityTypeBuilder<FoodEntity> builder)
+    public void Configure(EntityTypeBuilder<Food> builder)
     {
-        builder.HasKey(entity => entity.Id);
-        builder.Property(entity => entity.Name).IsRequired();
+        builder.HasKey(food => food.Id);
+        builder.Property(food => food.Name)
+            .IsRequired()
+            .HasMaxLength(16);
+        builder.Property(food => food.Description)
+            .HasMaxLength(256);
     }
 }

@@ -1,7 +1,7 @@
+using AutoMapper;
 using FoodDelivery.Contacts;
 using FoodDelivery.Core.Abstractions;
 using FoodDelivery.Core.Models;
-using FoodDelivery.DataAccess.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FoodDelivery.Controllers;
@@ -10,27 +10,31 @@ namespace FoodDelivery.Controllers;
 public class FoodsController : ControllerBase
 {
     private readonly IFoodsRepository _repository;
+    private readonly IMapper _mapper;
 
-    public FoodsController(IFoodsRepository repository)
+    public FoodsController(IFoodsRepository repository, IMapper mapper)
     {
         _repository = repository;
+        _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Food>>> GetFoods()
+    public async Task<ActionResult<List<GetFoodResponse>>> GetFoods()
     {
-        List<Food> response = await _repository.Get();
+        List<GetFoodResponse> response = _mapper.Map<List<GetFoodResponse>>(await _repository.Get());
         return Ok(response);
     }
 
     [HttpPost]
     public async Task<ActionResult<Guid>> CreateFood([FromBody] CreateFoodRequest request)
     {
-        var (food, error) = Food.Create(Guid.NewGuid(), request.Name, request.Description);
-        if (!string.IsNullOrEmpty(error))
+        Food food = new Food()
         {
-            return BadRequest(error);
-        }
+            Id = Guid.NewGuid(),
+            Name = request.Name,
+            Description = request.Description
+        };
+        
         Guid id = await _repository.Create(food);
         return Ok(id);
     }

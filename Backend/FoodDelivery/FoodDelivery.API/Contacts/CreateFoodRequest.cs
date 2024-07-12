@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace FoodDelivery.Contacts;
 
 public class CreateFoodRequest
