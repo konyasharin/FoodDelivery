@@ -3,6 +3,7 @@ using System;
 using FoodDelivery.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FoodDelivery.DataAccess.Migrations
 {
     [DbContext(typeof(FoodDeliveryDbContext))]
-    partial class FoodStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240715155143_RemoveExtraFieldsFromUsers")]
+    partial class RemoveExtraFieldsFromUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

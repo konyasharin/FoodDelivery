@@ -8,12 +8,12 @@ public class FoodConfiguration : IEntityTypeConfiguration<Food>
 {
     public void Configure(EntityTypeBuilder<Food> builder)
     {
-        builder.HasKey(food => food.Id);
-        builder.Property(food => food.Name)
+        builder.HasKey(f => f.Id);
+        builder.Property(f => f.Name)
             .IsRequired()
             .HasMaxLength(16);
-        builder.HasIndex(food => food.Name).IsUnique();
-        builder.Property(food => food.Description)
+        builder.HasIndex(f => f.Name).IsUnique();
+        builder.Property(f => f.Description)
             .HasMaxLength(256);
     }
 }

@@ -3,6 +3,7 @@ using System;
 using FoodDelivery.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FoodDelivery.DataAccess.Migrations
 {
     [DbContext(typeof(FoodDeliveryDbContext))]
-    partial class FoodStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240714151940_AddUsersRelative")]
+    partial class AddUsersRelative
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,7 +108,7 @@ namespace FoodDelivery.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AddressId")
+                    b.Property<Guid>("AddressId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Password")
@@ -118,7 +121,8 @@ namespace FoodDelivery.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
+                    b.HasIndex("AddressId")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
@@ -137,10 +141,18 @@ namespace FoodDelivery.DataAccess.Migrations
             modelBuilder.Entity("FoodDelivery.Core.Models.User", b =>
                 {
                     b.HasOne("FoodDelivery.Core.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
+                        .WithOne("User")
+                        .HasForeignKey("FoodDelivery.Core.Models.User", "AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Core.Models.Address", b =>
+                {
+                    b.Navigation("User")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FoodDelivery.Core.Models.User", b =>

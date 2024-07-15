@@ -1,63 +1,63 @@
-using AutoMapper;
 using FoodDelivery.Contacts;
-using FoodDelivery.Contacts.Food;
-using FoodDelivery.Core.Abstractions;
 using FoodDelivery.Core.Models;
+using FoodDelivery.DataAccess;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FoodDelivery.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class FoodsController : ControllerBase
 {
-    private readonly IFoodsRepository _repository;
-    private readonly IMapper _mapper;
+    private readonly FoodDeliveryDbContext _context;
 
-    public FoodsController(IFoodsRepository repository, IMapper mapper)
+    public FoodsController(FoodDeliveryDbContext context)
     {
-        _repository = repository;
-        _mapper = mapper;
+        _context = context;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<List<GetFoodResponse>>> GetFoods()
+    [HttpGet("GetAll")]
+    public async Task<ActionResult> GetFoods()
     {
-        List<GetFoodResponse> response = _mapper.Map<List<GetFoodResponse>>(await _repository.Get());
-        return Ok(response);
+        List<Food> foods = await _context.Foods
+            .AsNoTracking()
+            .ToListAsync(); 
+        List<FoodDto> response = foods.Select(f => new FoodDto(f.Id, f.Name, f.Description)).ToList();
+        return Ok(new GetFoodsResponse(response));
     }
 
-    [HttpPost]
-    public async Task<ActionResult<Guid>> CreateFood([FromBody] CreateFoodRequest request)
+    [HttpPost("Create")]
+    public async Task<ActionResult> CreateFood([FromBody] CreateFoodRequest request)
     {
-        Food food = new Food()
+        Food food = new Food(request.Name, request.Description);
+        await _context.Foods.AddAsync(food);
+        await _context.SaveChangesAsync();
+        return Ok(food.Id);
+    }
+
+    [HttpPut("Update/{id:guid}")]
+    public async Task<ActionResult> UpdateFood(Guid id, [FromBody] UpdateFoodRequest request)
+    {
+        Food? food = _context.Foods.FirstOrDefault(f => f.Id == id);
+        if (food is null)
         {
-            Id = Guid.NewGuid(),
-            Name = request.Name,
-            Description = request.Description
-        };
+            return BadRequest("Продукт не найден");
+        }
+
+        food.Name = request.Name;
+        food.Description = request.Description;
+        await _context.SaveChangesAsync();
         
-        Guid id = await _repository.Create(food);
         return Ok(id);
     }
 
-    [HttpPut("{id:guid}")]
-    public async Task<ActionResult<Guid>> UpdateFood(Guid id, [FromBody] UpdateFoodRequest request)
+    [HttpDelete("Delete/{id:guid}")]
+    public async Task<ActionResult> DeleteFood(Guid id)
     {
-        Food food = new Food()
-        {
-            Id = id,
-            Name = request.Name,
-            Description = request.Description
-        };
-        
-        Guid response = await _repository.Update(food);
-        return Ok(response);
-    }
+        await _context.Foods
+            .Where(f => f.Id == id)
+            .ExecuteDeleteAsync();
 
-    [HttpDelete("{id:guid}")]
-    public async Task<ActionResult<Guid>> DeleteFood(Guid id)
-    {
-        Guid response = await _repository.Delete(id);
-        return Ok(response);
+        return Ok(id);
     }
 }

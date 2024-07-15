@@ -12,5 +12,13 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder
             .HasMany(u => u.Orders)
             .WithOne(o => o.User);
+        builder
+            .HasOne(u => u.Address)
+            .WithOne();
+        builder.HasIndex(u => u.UserName).IsUnique();
+        builder.Property(u => u.UserName)
+            .HasMaxLength(32)
+            .IsRequired();
+        builder.Property(u => u.Password).IsRequired();
     }
 }

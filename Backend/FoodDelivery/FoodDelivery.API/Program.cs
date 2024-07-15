@@ -1,6 +1,4 @@
-using FoodDelivery.Core.Abstractions;
 using FoodDelivery.DataAccess;
-using FoodDelivery.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,11 +13,7 @@ builder.Services.AddDbContext<FoodDeliveryDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(FoodDeliveryDbContext)));
 });
 
-builder.Services.AddScoped<IFoodsRepository, FoodsRepository>();
-builder.Services.AddScoped<IUsersRepository, UsersRepository>();
-builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
-
-builder.Services.AddAutoMapper(typeof(Program).Assembly);
+builder.Services.AddScoped<FoodDeliveryDbContext>();
 
 var app = builder.Build();
 

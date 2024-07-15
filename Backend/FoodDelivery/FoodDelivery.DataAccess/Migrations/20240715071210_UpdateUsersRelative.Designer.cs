@@ -3,6 +3,7 @@ using System;
 using FoodDelivery.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FoodDelivery.DataAccess.Migrations
 {
     [DbContext(typeof(FoodDeliveryDbContext))]
-    partial class FoodStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240715071210_UpdateUsersRelative")]
+    partial class UpdateUsersRelative
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +56,13 @@ namespace FoodDelivery.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Addresses");
                 });
@@ -105,9 +114,6 @@ namespace FoodDelivery.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid?>("AddressId")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
@@ -118,9 +124,18 @@ namespace FoodDelivery.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FoodDelivery.Core.Models.Address", b =>
+                {
+                    b.HasOne("FoodDelivery.Core.Models.User", "User")
+                        .WithOne("Address")
+                        .HasForeignKey("FoodDelivery.Core.Models.Address", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FoodDelivery.Core.Models.Order", b =>
@@ -136,15 +151,8 @@ namespace FoodDelivery.DataAccess.Migrations
 
             modelBuilder.Entity("FoodDelivery.Core.Models.User", b =>
                 {
-                    b.HasOne("FoodDelivery.Core.Models.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId");
-
                     b.Navigation("Address");
-                });
 
-            modelBuilder.Entity("FoodDelivery.Core.Models.User", b =>
-                {
                     b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
