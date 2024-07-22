@@ -1,5 +1,6 @@
 import './App.css';
-import { Container, Header } from '@/components';
+import { Container } from '@/components/layouts/Container/Container.tsx';
+import { Header } from '@/components/layouts/Header/Header.tsx';
 
 function App() {
   return (

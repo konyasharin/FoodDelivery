@@ -1,20 +1,20 @@
 import React from 'react';
 import clsx from 'clsx';
-import styles from './IconButton.module.css';
+import styles from './ButtonBase.module.css';
 
-type IconButtonProps = {
+type ButtonBaseProps = {
   onClick: () => void;
-  icon: React.ReactNode;
+  children: React.ReactNode;
   className?: string;
 };
 
-export const IconButton: React.FC<IconButtonProps> = props => {
+export const ButtonBase: React.FC<ButtonBaseProps> = props => {
   return (
     <button
       className={clsx(props.className, styles.icon_button)}
       onClick={props.onClick}
     >
-      {props.icon}
+      {props.children}
     </button>
   );
 };

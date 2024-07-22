@@ -44,6 +44,7 @@ span, button, .text, .text_bold{
 
 .text_upper{
     font-size: 16px;
+    text-transform: uppercase;
 }
 
 .text_small{

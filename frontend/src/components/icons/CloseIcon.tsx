@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconProps } from '@/utils';
-import { FILL, HEIGHT, WIDTH } from '@/shared';
+import { IconProps } from '@/utils/IconProps.ts';
+import { FILL, HEIGHT, WIDTH } from '@/shared/constants/iconBaseValues.ts';
 
 export const CloseIcon: React.FC<IconProps> = ({
   fill = FILL,
