@@ -38,7 +38,7 @@ public class FoodsController : ControllerBase
     [HttpPut("Update/{id:guid}")]
     public async Task<ActionResult> UpdateFood(Guid id, [FromBody] UpdateFoodRequest request)
     {
-        Food? food = _context.Foods.FirstOrDefault(f => f.Id == id);
+        Food? food = await _context.Foods.FirstOrDefaultAsync(f => f.Id == id);
         if (food is null)
         {
             return BadRequest("Продукт не найден");
