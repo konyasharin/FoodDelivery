@@ -1,0 +1,44 @@
+.button{
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.1s all;
+}
+
+.button:hover{
+    box-shadow: none;
+}
+
+.default{
+    box-shadow: none;
+    background: none;
+    border: none;
+}
+
+.dash{
+    padding: 5px 15px;
+    border: 1px dashed var(--color_black);
+    background-color: var(--color_white);
+}
+
+.primary{
+    padding: 20px 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--color_orange);
+}
+
+.outline{
+    padding: 20px 30px;
+    border-radius: 20px;
+    background-color: var(--color_white);
+    border: 3px solid var(--color_orange);
+}
+
+.outline:hover{
+    background-color: var(--color_orange_light);
+}
+
+.primary:active, .outline:active, .dash:active{
+    box-shadow: inset 2px 4px 8px 2px rgba(0, 0, 0, 0.25);
+}

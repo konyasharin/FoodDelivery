@@ -9,13 +9,20 @@
 :root{
     font-family: "Roboto", sans-serif;
     --color_black: #000000;
-    --color_white: #ffffff;
+    --color_white: #FFFFFF;
     --color_grey: #B9B9B9;
+    --color_grey_light: #F4F4F4;
+    --color_grey_dark: #8E8E8D;
+    --color_red: #FF0000;
+    --color_orange: #FCC204;
+    --color_orange_light: #FCDE74;
+    --block_shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 }
 
 h1{
     font-size: 64px;
     font-weight: 100;
+    text-transform: uppercase;
 }
 
 span, a, button, .text, .text_small, .text_upper{
@@ -24,6 +31,7 @@ span, a, button, .text, .text_small, .text_upper{
 
 h2, h3, h4, .text_bold{
     font-weight: 700;
+    text-transform: uppercase;
 }
 
 h2{

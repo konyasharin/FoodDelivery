@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './BurgerPanel.module.css';
-import { ButtonBase } from '@/components/shared/buttons/ButtonBase/ButtonBase.tsx';
+import { Button } from '@/components/ui/Button/Button.tsx';
 import { CloseIcon } from '@/components/icons/CloseIcon.tsx';
 import React, { Dispatch, SetStateAction } from 'react';
 
@@ -17,9 +17,9 @@ export const BurgerPanel: React.FC<BurgerPanelProps> = props => {
         props.isActive ? styles.panel_active : styles.panel_disable,
       )}
     >
-      <ButtonBase onClick={() => props.setIsActive(false)}>
+      <Button onClick={() => props.setIsActive(false)}>
         <CloseIcon />
-      </ButtonBase>
+      </Button>
     </div>
   );
 };

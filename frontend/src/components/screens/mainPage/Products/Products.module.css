@@ -1,0 +1,19 @@
+.products{
+    margin-top: 150px;
+}
+
+.title{
+    text-align: center;
+}
+
+.categories{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.category_active{
+    background-color: var(--color_orange_light);
+}
