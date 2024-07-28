@@ -1,6 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
 import styles from './Button.module.css';
+import clsx from 'clsx';
 
 type ButtonVariants = 'dash' | 'outline' | 'primary' | 'default';
 type ButtonProps = {

@@ -1,0 +1,26 @@
+.blocks{
+    display: flex;
+    justify-content: space-between;
+}
+
+.blocks img{
+    width: 520px;
+    height: 320px;
+    object-fit: cover;
+}
+
+.left_block{
+    display: flex;
+    flex-direction: column;
+}
+
+.left_block span{
+    margin-top: auto;
+    margin-bottom: 30px;
+}
+
+.left_block button{
+    width: 210px;
+    height: 85px;
+    padding: 0;
+}

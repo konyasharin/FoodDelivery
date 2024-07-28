@@ -1,7 +1,8 @@
 import styles from './Products.module.css';
 import { Button } from '@/components/ui/Button/Button.tsx';
 import { useSelect } from '@/hooks/useSelect.ts';
-import { useCount } from '@/hooks/useCount.ts';
+import { VerticalProductCard } from '@/components/shared/productCards/VerticalProductCard/VerticalProductCard.tsx';
+import productImg from '@/assets/product.png';
 
 export const Products = () => {
   const categories = [
@@ -14,7 +15,6 @@ export const Products = () => {
     'Ужин',
   ];
   const [activeCategory, setActiveCategory] = useSelect(categories);
-  const { value, increment, decrement } = useCount();
   return (
     <section className={styles.products}>
       <h2 className={styles.title}>Продукты</h2>
@@ -24,17 +24,51 @@ export const Products = () => {
             <Button
               onClick={() => setActiveCategory(i)}
               variant={'outline'}
-              className={i === activeCategory ? styles.category_active : null}
+              className={
+                i === activeCategory ? styles.category_active : undefined
+              }
             >
               {category}
             </Button>
           );
         })}
       </div>
-
-      <div>{value}</div>
-      <button onClick={() => increment()}>+</button>
-      <button onClick={() => decrement()}>-</button>
+      <div className={styles.cards}>
+        <VerticalProductCard
+          title={'Мороженое "Клубничный взрыв"'}
+          description={
+            'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое '
+          }
+          price={123}
+          img={productImg}
+          className={styles.card}
+        />
+        <VerticalProductCard
+          title={'Мороженое "Клубничный взрыв"'}
+          description={
+            'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое '
+          }
+          price={123}
+          img={productImg}
+          className={styles.card}
+        />
+        <VerticalProductCard
+          title={'Мороженое "Клубничный взрыв"'}
+          description={
+            'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое '
+          }
+          price={123}
+          img={productImg}
+          className={styles.card}
+        />
+      </div>
+      <Button
+        onClick={() => console.log('Показать еще')}
+        className={styles.show_more_btn}
+        variant={'primary'}
+      >
+        Показать еще...
+      </Button>
     </section>
   );
 };

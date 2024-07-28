@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    white-space: pre-wrap;
 }
 
 :root{
@@ -29,9 +30,13 @@ span, a, button, .text, .text_small, .text_upper{
     font-weight: 400;
 }
 
-h2, h3, h4, .text_bold{
+h2, h3, h4{
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.text_bold{
+    font-weight: 700;
 }
 
 h2{
