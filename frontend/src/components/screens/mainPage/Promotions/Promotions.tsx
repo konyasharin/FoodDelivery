@@ -3,7 +3,7 @@ import { PromotionsSlider } from '@/components/shared/sliders/PromotionsSlider/P
 
 export const Promotions = () => {
   return (
-    <section className={styles.promotions}>
+    <section className={styles.promotions} id="promotions">
       <h2>Акции</h2>
       <PromotionsSlider />
     </section>

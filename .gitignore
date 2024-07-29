@@ -12,6 +12,7 @@
 /backend/FoodDelivery/FoodDelivery.DataAccess/obj
 
 #frontend
+/frontend/*.env
 # Logs
 /frontend/logs
 /frontend/*.log

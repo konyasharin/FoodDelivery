@@ -13,9 +13,9 @@ export const DeliveryBlock: FC<DeliveryBlockProps> = props => {
   return (
     <div className={clsx(styles.delivery_block, props.className)}>
       <h3>{props.title}</h3>
-      {props.elements.map(element => {
+      {props.elements.map((element, i) => {
         return (
-          <div className={styles.content_block}>
+          <div className={styles.content_block} key={i}>
             <img src={element.icon} alt="element" />
             <div>
               <h4>{element.title}</h4>

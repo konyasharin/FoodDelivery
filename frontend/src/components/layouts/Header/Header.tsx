@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import styles from './Header.module.css';
 import { useEffect, useState } from 'react';
@@ -30,30 +30,18 @@ export const Header = () => {
         <Container className={styles.content_block}>
           <Burger isActive={burgerIsActive} setIsActive={setBurgerIsActive} />
           <div className={styles.links}>
-            <NavLink
-              to={'#delivery'}
-              className={clsx('text_upper', styles.link)}
-            >
+            <a href={'#delivery'} className={clsx('text_upper', styles.link)}>
               Доставка
-            </NavLink>
-            <NavLink
-              to={'#delivery'}
-              className={clsx('text_upper', styles.link)}
-            >
+            </a>
+            <a href={'#promotions'} className={clsx('text_upper', styles.link)}>
               Акции
-            </NavLink>
-            <NavLink
-              to={'#delivery'}
-              className={clsx('text_upper', styles.link)}
-            >
+            </a>
+            <a href={'#products'} className={clsx('text_upper', styles.link)}>
               Продукты
-            </NavLink>
-            <NavLink
-              to={'#delivery'}
-              className={clsx('text_upper', styles.link)}
-            >
+            </a>
+            <Link to={'/sign-in'} className={clsx('text_upper', styles.link)}>
               Вход
-            </NavLink>
+            </Link>
           </div>
           <Button
             onClick={() => console.log('Корзина')}

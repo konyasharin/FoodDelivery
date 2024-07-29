@@ -16,7 +16,7 @@ export const Products = () => {
   ];
   const [activeCategory, setActiveCategory] = useSelect(categories);
   return (
-    <section className={styles.products}>
+    <section className={styles.products} id={'products'}>
       <h2 className={styles.title}>Продукты</h2>
       <div className={styles.categories}>
         {...categories.map((category, i) => {

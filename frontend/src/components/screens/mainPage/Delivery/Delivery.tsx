@@ -1,11 +1,29 @@
 import styles from './Delivery.module.css';
 import { DeliveryBlock } from '@/components/screens/mainPage/DeliveryBlock/DeliveryBlock.tsx';
 import computerIcon from '@/assets/computer.svg';
-import { Placemark, Map, YMaps } from '@pbe/react-yandex-maps';
+import { useEffect } from 'react';
+import * as tt from '@tomtom-international/web-sdk-maps';
+import '@tomtom-international/web-sdk-maps/dist/maps.css';
 
 export const Delivery = () => {
+  useEffect(() => {
+    const map = tt.map({
+      key: import.meta.env.APP_MAP_API_KEY,
+      container: 'map-container',
+      style:
+        'https://api.tomtom.com/style/2/custom/style/dG9tdG9tQEBAR0M4WkowbWJMM3BjQ1BWQTthMjVhNDQzZC1kZWM2LTQyYTQtYmViMy02ZjEwYzQ4MTk2YWY=/drafts/0.json',
+      center: [92.880445, 56.042709],
+      zoom: 11,
+      language: 'ru',
+    });
+    new tt.Marker().setLngLat([92.880445, 56.042709]).addTo(map);
+    map.addControl(new tt.FullscreenControl());
+    map.addControl(new tt.NavigationControl());
+    return () => map.remove();
+  }, []);
+
   return (
-    <section className={styles.delivery}>
+    <section className={styles.delivery} id={'delivery'}>
       <h2>Доставка</h2>
       <div className={styles.blocks}>
         <div className={styles.delivery_blocks}>
@@ -43,17 +61,7 @@ export const Delivery = () => {
         </div>
         <div className={styles.map_block}>
           <h3>Мы на карте</h3>
-          <YMaps>
-            <Map
-              className={styles.map}
-              defaultState={{
-                center: [56.042709, 92.880445],
-                zoom: 10,
-              }}
-            >
-              <Placemark geometry={[56.042709, 92.880445]} />
-            </Map>
-          </YMaps>
+          <div id={'map-container'} className={styles.map}></div>
         </div>
       </div>
     </section>
