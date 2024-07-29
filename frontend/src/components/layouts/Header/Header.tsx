@@ -27,7 +27,7 @@ export const Header = () => {
       <header
         className={clsx(styles.header, isScrolled ? styles.header_active : '')}
       >
-        <Container className={styles.content}>
+        <Container className={styles.content_block}>
           <Burger isActive={burgerIsActive} setIsActive={setBurgerIsActive} />
           <div className={styles.links}>
             <NavLink

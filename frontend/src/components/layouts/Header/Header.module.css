@@ -4,6 +4,7 @@
     width: 100%;
     box-shadow: none;
     transition: .3s all;
+    z-index: 2;
 }
 
 .header_active{

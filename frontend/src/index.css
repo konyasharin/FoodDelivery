@@ -4,12 +4,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    white-space: pre-wrap;
 }
 
 :root{
     font-family: "Roboto", sans-serif;
     --color_black: #000000;
+    --color_black_light: #2E2E2E;
     --color_white: #FFFFFF;
     --color_grey: #B9B9B9;
     --color_grey_light: #F4F4F4;
@@ -28,6 +28,7 @@ h1{
 
 span, a, button, .text, .text_small, .text_upper{
     font-weight: 400;
+    white-space: pre-wrap;
 }
 
 h2, h3, h4{
