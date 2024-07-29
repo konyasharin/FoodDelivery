@@ -1,0 +1,24 @@
+.delivery_block {
+    width: 462px;
+    display: flex;
+    flex-direction: column;
+}
+
+.delivery_block h3{
+    margin-bottom: 30px;
+    color: var(--color_orange);
+}
+
+.content_block{
+    display: flex;
+    align-items: start;
+    margin-bottom: 20px;
+}
+
+.content_block:last-child{
+    margin-bottom: 0;
+}
+
+.content_block img{
+    margin-right: 20px;
+}
