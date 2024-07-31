@@ -1,12 +1,13 @@
 import { FC } from 'react';
-import { ProductCardProps } from '@/shared/types/ProductCardProps.ts';
+import { ProductCardProps } from '@/components/shared/productCards/types/ProductCardProps.ts';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
-import { Counter, CounterProps } from '@/components/shared/Counter/Counter.tsx';
+import { Counter } from '@/components/shared/Counter/Counter.tsx';
 import styles from './VerticalProductCard.module.css';
 import clsx from 'clsx';
+import { CounterType } from '@/shared/types/CounterType.ts';
 
 export const VerticalProductCard: FC<
-  ProductCardProps & { counter: CounterProps }
+  ProductCardProps & { counter: CounterType }
 > = props => {
   return (
     <Wrapper className={clsx(styles.card, props.className)}>

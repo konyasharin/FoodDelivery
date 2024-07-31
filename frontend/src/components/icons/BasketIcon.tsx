@@ -1,4 +1,4 @@
-import { IconProps } from '@/shared/types/IconProps.ts';
+import { IconProps } from '@/components/icons/types/IconProps.ts';
 import React from 'react';
 import { BLACK } from '@/shared/constants/colors.ts';
 

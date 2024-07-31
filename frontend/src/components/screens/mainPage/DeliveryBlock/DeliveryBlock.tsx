@@ -1,7 +1,12 @@
 import { FC } from 'react';
 import styles from './DeliveryBlock.module.css';
-import { DeliveryBlockElementType } from '@/shared/types/DeliveryBlockElementType.ts';
 import clsx from 'clsx';
+
+export type DeliveryBlockElementType = {
+  title: string;
+  description: string;
+  icon: string;
+};
 
 type DeliveryBlockProps = {
   title: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconProps } from '@/shared/types/IconProps.ts';
+import { IconProps } from '@/components/icons/types/IconProps.ts';
 import { BLACK } from '@/shared/constants/colors.ts';
 
 export const CloseIcon: React.FC<IconProps> = ({

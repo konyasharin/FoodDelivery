@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store.ts';
-import { CounterProps } from '@/components/shared/Counter/Counter.tsx';
 import { createCounter } from '@/utils/helpers/counter/createCounter.ts';
 import { ProductType } from '@/shared/types/ProductType.ts';
 import { setCartProduct } from '@/store/slices/cartSlice.ts';
@@ -9,6 +8,7 @@ import {
   incrementValidate,
 } from '@/utils/helpers/counter/validate.ts';
 import { useEffect, useState } from 'react';
+import { CounterType } from '@/shared/types/CounterType.ts';
 
 export const useCart = () => {
   const cart = useSelector((state: RootState) => state.cart);
@@ -24,7 +24,7 @@ export const useCart = () => {
     setPrice(getPrice());
   }, [cart]);
 
-  const createCounterHandle = (product: ProductType): CounterProps => {
+  const createCounterHandle = (product: ProductType): CounterType => {
     const count =
       cart.products.find(cartProduct => cartProduct.id === product.id)?.count ??
       0;

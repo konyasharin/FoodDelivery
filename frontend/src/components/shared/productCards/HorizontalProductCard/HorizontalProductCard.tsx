@@ -1,4 +1,4 @@
-import { ProductCardProps } from '@/shared/types/ProductCardProps.ts';
+import { ProductCardProps } from '@/components/shared/productCards/types/ProductCardProps.ts';
 import { FC, ReactNode } from 'react';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
 import styles from './HorizontalProductCard.module.css';

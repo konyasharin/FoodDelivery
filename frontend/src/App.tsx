@@ -11,16 +11,18 @@ import { store } from '@/store/store.ts';
 
 function App() {
   return (
-    <Provider store={store}>
-      <Header />
-      <Container>
-        <Routes>
-          <Route path={MAIN} element={<MainPage />} />
-          <Route path={BASKET} element={<BasketPage />} />
-        </Routes>
-      </Container>
-      <Footer />
-    </Provider>
+    <div className={'app'}>
+      <Provider store={store}>
+        <Header />
+        <Container className={'main_container'}>
+          <Routes>
+            <Route path={MAIN} element={<MainPage />} />
+            <Route path={BASKET} element={<BasketPage />} />
+          </Routes>
+        </Container>
+        <Footer />
+      </Provider>
+    </div>
   );
 }
 

@@ -29,7 +29,7 @@ export const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   return (
     <>
       <BurgerPanel isActive={burgerIsActive} setIsActive={setBurgerIsActive} />
@@ -57,7 +57,6 @@ export const Header = () => {
             </Link>
           </div>
           <Button
-            onClick={() => console.log('Корзина')}
             className={
               price > 0
                 ? clsx(styles.basket_button_active, styles.basket_button)

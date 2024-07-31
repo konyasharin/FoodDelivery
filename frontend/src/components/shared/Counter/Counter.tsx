@@ -1,14 +1,9 @@
 import React from 'react';
 import styles from './Counter.module.css';
 import clsx from 'clsx';
+import { CounterType } from '@/shared/types/CounterType.ts';
 
-export type CounterProps = {
-  onIncrement: () => void;
-  onDecrement: () => void;
-  value: number;
-};
-
-export const Counter: React.FC<CounterProps> = props => {
+export const Counter: React.FC<CounterType> = props => {
   return (
     <div className={styles.counter}>
       <div className={styles.inner}>

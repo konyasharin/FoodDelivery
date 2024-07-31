@@ -4,6 +4,7 @@ import { Counter } from '@/components/shared/Counter/Counter.tsx';
 import { PromotionsSlider } from '@/components/shared/sliders/PromotionsSlider/PromotionsSlider.tsx';
 import { Button } from '@/components/ui/Button/Button.tsx';
 import { useCart } from '@/hooks/useCart.ts';
+import clsx from 'clsx';
 
 export const BasketPage = () => {
   const { cart, price, createCounterHandle } = useCart();
@@ -28,11 +29,17 @@ export const BasketPage = () => {
           />
         );
       })}
+      {cart.products.length === 0 && (
+        <div className={clsx(styles.cart_empty_block, 'text_small')}>
+          Корзина пуста
+        </div>
+      )}
       <PromotionsSlider />
       <Button
         className={styles.button}
         variant={'primary'}
         onClick={() => console.log('Оформить заказ')}
+        disabled={price <= 0}
       >
         Оформить заказ за {price}₽
       </Button>

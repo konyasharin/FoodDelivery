@@ -9,6 +9,11 @@
     box-shadow: none;
 }
 
+.button:disabled{
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 .default{
     box-shadow: none;
     background: none;
@@ -28,6 +33,10 @@
     background-color: var(--color_orange);
 }
 
+.primary:disabled{
+    background-color: var(--color_orange_light);
+}
+
 .outline{
     padding: 20px 30px;
     border-radius: 20px;
@@ -39,6 +48,6 @@
     background-color: var(--color_orange_light);
 }
 
-.primary:active, .outline:active, .dash:active{
+.primary:active:not(.primary:disabled), .outline:active, .dash:active{
     box-shadow: inset 2px 4px 8px 2px rgba(0, 0, 0, 0.25);
 }
