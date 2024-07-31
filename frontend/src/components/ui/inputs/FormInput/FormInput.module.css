@@ -1,0 +1,24 @@
+.input{
+    border: none;
+    border-bottom: 3px solid var(--color_black);
+    padding: 10px 0;
+    width: 100%;
+    height: 50px;
+}
+
+.input_error{
+    border-bottom: 3px solid var(--color_red_dark);
+}
+
+.input:focus{
+    outline: none;
+}
+
+.input::placeholder{
+    color: var(--color_grey_dark);
+}
+
+.error{
+    margin-top: 10px;
+    color: var(--color_red_dark);
+}
