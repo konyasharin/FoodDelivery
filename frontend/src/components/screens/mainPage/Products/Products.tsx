@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/Button/Button.tsx';
 import { useSelect } from '@/hooks/useSelect.ts';
 import { VerticalProductCard } from '@/components/shared/productCards/VerticalProductCard/VerticalProductCard.tsx';
 import productImg from '@/assets/product.png';
+import { ProductType } from '@/shared/types/ProductType.ts';
+import { useCart } from '@/hooks/useCart.ts';
 
 export const Products = () => {
   const categories = [
@@ -14,7 +16,18 @@ export const Products = () => {
     'Обед',
     'Ужин',
   ];
-  const [activeCategory, setActiveCategory] = useSelect(categories);
+  const products: ProductType[] = [
+    {
+      id: 0,
+      title: 'Мороженое "Клубничный взрыв"',
+      description:
+        'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое',
+      img: productImg,
+      price: 123,
+    },
+  ];
+  const [activeCategory, setActiveCategory] = useSelect(categories.length);
+  const { createCounterHandle } = useCart();
   return (
     <section className={styles.products} id={'products'}>
       <h2 className={styles.title}>Продукты</h2>
@@ -34,33 +47,15 @@ export const Products = () => {
         })}
       </div>
       <div className={styles.cards}>
-        <VerticalProductCard
-          title={'Мороженое "Клубничный взрыв"'}
-          description={
-            'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое '
-          }
-          price={123}
-          img={productImg}
-          className={styles.card}
-        />
-        <VerticalProductCard
-          title={'Мороженое "Клубничный взрыв"'}
-          description={
-            'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое '
-          }
-          price={123}
-          img={productImg}
-          className={styles.card}
-        />
-        <VerticalProductCard
-          title={'Мороженое "Клубничный взрыв"'}
-          description={
-            'Очень вкусное мороженое Очень вкусное мороженое Очень вкусное мороженое  Очень вкусное мороженое '
-          }
-          price={123}
-          img={productImg}
-          className={styles.card}
-        />
+        {...products.map(product => {
+          return (
+            <VerticalProductCard
+              product={product}
+              counter={createCounterHandle(product)}
+              className={styles.card}
+            />
+          );
+        })}
       </div>
       <Button
         onClick={() => console.log('Показать еще')}

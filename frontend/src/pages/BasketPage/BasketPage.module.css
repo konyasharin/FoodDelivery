@@ -1,0 +1,17 @@
+.basket_page{
+    margin-top: 80px;
+}
+
+.basket_page h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.card{
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.card:last-child{
+    margin-bottom: 50px;
+}

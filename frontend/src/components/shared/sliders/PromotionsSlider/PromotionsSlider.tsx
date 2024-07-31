@@ -1,19 +1,23 @@
 import { Slider } from '@/components/shared/sliders/Slider/Slider.tsx';
-import { useContext } from 'react';
 import { Button } from '@/components/ui/Button/Button.tsx';
 import styles from './PromotionsSlider.module.css';
 import { useSelect } from '@/hooks/useSelect.ts';
-import { StoreContext } from '@/context/StoreContext.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store/store.ts';
+import { setPromotionActive } from '@/store/slices/promotionsSlice.ts';
 
 export const PromotionsSlider = () => {
-  const { state, dispatch } = useContext(StoreContext);
-  const [activePromotionIndex, setActivePromotionIndex] = useSelect(
-    state.promotions,
+  const promotions = useSelector(
+    (state: RootState) => state.promotions.promotionsList,
   );
-  const activePromotion = state.promotions[activePromotionIndex];
+  const dispatch = useDispatch();
+  const [activePromotionIndex, setActivePromotionIndex] = useSelect(
+    promotions.length,
+  );
+  const activePromotion = promotions[activePromotionIndex];
   return (
     <Slider
-      countElements={state.promotions.length}
+      countElements={promotions.length}
       activeElemIndex={activePromotionIndex}
       setActiveElemIndex={index => setActivePromotionIndex(index)}
     >
@@ -24,19 +28,7 @@ export const PromotionsSlider = () => {
           <Button
             variant={activePromotion.isActive ? 'primary' : 'outline'}
             onClick={() => {
-              for (let i = 0; i < state.promotions.length; i++) {
-                dispatch({
-                  type: 'setPromotionIsActive',
-                  payload: {
-                    id: state.promotions[i].id,
-                    isActive: false,
-                  },
-                });
-              }
-              dispatch({
-                type: 'setPromotionIsActive',
-                payload: { id: activePromotionIndex, isActive: true },
-              });
+              dispatch(setPromotionActive({ id: activePromotion.id }));
             }}
           >
             {activePromotion.isActive ? 'Применено' : 'Применить'}

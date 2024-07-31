@@ -1,4 +1,4 @@
-export type Promotion = {
+export type PromotionType = {
   id: number;
   title: string;
   endDate: string;

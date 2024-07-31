@@ -7,6 +7,14 @@ import { BurgerPanel } from '@/components/layouts/burgerMenu/BurgerPanel/BurgerP
 import { Button } from '@/components/ui/Button/Button.tsx';
 import { BasketIcon } from '@/components/icons/BasketIcon.tsx';
 import { Container } from '@/components/layouts/Container/Container.tsx';
+import {
+  BASKET,
+  DELIVERY,
+  PRODUCTS,
+  PROMOTIONS,
+  SIGN_IN,
+} from '@/shared/routes/routes.ts';
+import { HashLink } from 'react-router-hash-link';
 
 export const Header = () => {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
@@ -30,16 +38,16 @@ export const Header = () => {
         <Container className={styles.content_block}>
           <Burger isActive={burgerIsActive} setIsActive={setBurgerIsActive} />
           <div className={styles.links}>
-            <a href={'#delivery'} className={clsx('text_upper', styles.link)}>
+            <HashLink to={DELIVERY} className={clsx('text_upper', styles.link)}>
               Доставка
-            </a>
-            <a href={'#promotions'} className={clsx('text_upper', styles.link)}>
+            </HashLink>
+            <HashLink to={PROMOTIONS} className={clsx('text_upper', styles.link)}>
               Акции
-            </a>
-            <a href={'#products'} className={clsx('text_upper', styles.link)}>
+            </HashLink>
+            <HashLink to={PRODUCTS} className={clsx('text_upper', styles.link)}>
               Продукты
-            </a>
-            <Link to={'/sign-in'} className={clsx('text_upper', styles.link)}>
+            </HashLink>
+            <Link to={SIGN_IN} className={clsx('text_upper', styles.link)}>
               Вход
             </Link>
           </div>
@@ -47,6 +55,7 @@ export const Header = () => {
             onClick={() => console.log('Корзина')}
             className={styles.basket_button}
             variant={'dash'}
+            to={BASKET}
           >
             <BasketIcon size={36} />
             <span className={'text_bold'}>129₽</span>

@@ -1,7 +1,6 @@
+import { ProductType } from '@/shared/types/ProductType.ts';
+
 export type ProductCardProps = {
-  img: string;
-  title: string;
-  description: string;
-  price: number;
+  product: ProductType;
   className?: string;
 };

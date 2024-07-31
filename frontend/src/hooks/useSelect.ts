@@ -6,17 +6,17 @@ type UseSelectOptions = {
 
 type UseSelectReturn = [number, (newActiveElement: number) => void];
 
-export const useSelect = <T>(
-  elements: T[],
+export const useSelect = (
+  length: number,
   options?: UseSelectOptions,
 ): UseSelectReturn => {
-  if (elements.length === 0) throw new Error('No elements in array');
   const [activeElement, setActiveElement] = useState<number>(
     options?.initialActiveElement ? options.initialActiveElement : 0,
   );
 
   const setActiveElementHandle = (newActiveElement: number) => {
     if (newActiveElement <= 0) return setActiveElement(0);
+    if (newActiveElement > length) return setActiveElement(length);
     setActiveElement(newActiveElement);
   };
 

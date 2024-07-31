@@ -28,6 +28,9 @@ h1{
 
 span, a, button, .text, .text_small, .text_upper{
     font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6, span, a, p{
     white-space: pre-wrap;
 }
 
