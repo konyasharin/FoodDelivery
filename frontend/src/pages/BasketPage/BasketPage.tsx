@@ -3,21 +3,10 @@ import { HorizontalProductCard } from '@/components/shared/productCards/Horizont
 import { Counter } from '@/components/shared/Counter/Counter.tsx';
 import { PromotionsSlider } from '@/components/shared/sliders/PromotionsSlider/PromotionsSlider.tsx';
 import { Button } from '@/components/ui/Button/Button.tsx';
-import { useEffect, useState } from 'react';
 import { useCart } from '@/hooks/useCart.ts';
 
 export const BasketPage = () => {
-  const { cart, createCounterHandle } = useCart();
-  const getPrice = () => {
-    let price = 0;
-    cart.products.forEach(product => (price += product.price));
-    return price;
-  };
-  const [price, setPrice] = useState(getPrice());
-
-  useEffect(() => {
-    setPrice(getPrice());
-  }, [cart]);
+  const { cart, price, createCounterHandle } = useCart();
 
   return (
     <section className={styles.basket_page}>
@@ -40,7 +29,11 @@ export const BasketPage = () => {
         );
       })}
       <PromotionsSlider />
-      <Button onClick={() => console.log('Оформить заказ')}>
+      <Button
+        className={styles.button}
+        variant={'primary'}
+        onClick={() => console.log('Оформить заказ')}
+      >
         Оформить заказ за {price}₽
       </Button>
     </section>

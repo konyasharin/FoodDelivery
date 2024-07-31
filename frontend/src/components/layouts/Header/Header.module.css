@@ -36,11 +36,18 @@
 }
 
 .header .basket_button{
+    height: 46px;
     background-color: var(--color_white);
     display: flex;
     align-items: center;
     margin-left: auto;
     margin-right: 0;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
+.header .basket_button_active{
+    background-color: var(--color_orange);
 }
 
 .basket_button svg{

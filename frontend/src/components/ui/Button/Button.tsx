@@ -22,7 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   const navigate = useNavigate();
   return (
     <button
-      className={clsx(styles.button, className, styles[variant])}
+      className={clsx(styles.button, styles[variant], className)}
       onClick={() => {
         onClick();
         if (to) navigate(to);

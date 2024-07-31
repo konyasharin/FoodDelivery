@@ -15,10 +15,12 @@ import {
   SIGN_IN,
 } from '@/shared/routes/routes.ts';
 import { HashLink } from 'react-router-hash-link';
+import { useCart } from '@/hooks/useCart.ts';
 
 export const Header = () => {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { price } = useCart();
   function handleScroll() {
     setIsScrolled(window.scrollY > 100);
   }
@@ -27,7 +29,7 @@ export const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  
   return (
     <>
       <BurgerPanel isActive={burgerIsActive} setIsActive={setBurgerIsActive} />
@@ -41,7 +43,10 @@ export const Header = () => {
             <HashLink to={DELIVERY} className={clsx('text_upper', styles.link)}>
               Доставка
             </HashLink>
-            <HashLink to={PROMOTIONS} className={clsx('text_upper', styles.link)}>
+            <HashLink
+              to={PROMOTIONS}
+              className={clsx('text_upper', styles.link)}
+            >
               Акции
             </HashLink>
             <HashLink to={PRODUCTS} className={clsx('text_upper', styles.link)}>
@@ -53,12 +58,16 @@ export const Header = () => {
           </div>
           <Button
             onClick={() => console.log('Корзина')}
-            className={styles.basket_button}
-            variant={'dash'}
+            className={
+              price > 0
+                ? clsx(styles.basket_button_active, styles.basket_button)
+                : styles.basket_button
+            }
+            variant={price > 0 ? 'primary' : 'dash'}
             to={BASKET}
           >
             <BasketIcon size={36} />
-            <span className={'text_bold'}>129₽</span>
+            <span className={'text_bold'}>{price}₽</span>
           </Button>
         </Container>
       </header>

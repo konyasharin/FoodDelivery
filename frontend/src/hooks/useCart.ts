@@ -8,10 +8,22 @@ import {
   decrementValidate,
   incrementValidate,
 } from '@/utils/helpers/counter/validate.ts';
+import { useEffect, useState } from 'react';
 
 export const useCart = () => {
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
+  const getPrice = () =>
+    cart.products.reduce(
+      (acc, current) => acc + current.price * current.count,
+      0,
+    );
+  const [price, setPrice] = useState(getPrice());
+
+  useEffect(() => {
+    setPrice(getPrice());
+  }, [cart]);
+
   const createCounterHandle = (product: ProductType): CounterProps => {
     const count =
       cart.products.find(cartProduct => cartProduct.id === product.id)?.count ??
@@ -41,5 +53,5 @@ export const useCart = () => {
     };
   };
 
-  return { cart, createCounterHandle };
+  return { cart, price, createCounterHandle };
 };
