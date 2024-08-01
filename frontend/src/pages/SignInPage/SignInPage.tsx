@@ -1,6 +1,6 @@
-import { InputGroup } from '@/components/ui/inputs/InputGroup/InputGroup.tsx';
+import { InputGroup } from '@/components/shared/inputParts/InputGroup/InputGroup.tsx';
 import { Input } from '@/components/ui/inputs/Input/Input.tsx';
-import { InputAddon } from '@/components/ui/inputs/InputAddon/InputAddon.tsx';
+import { InputAddon } from '@/components/shared/inputParts/InputAddon/InputAddon.tsx';
 
 export const SignInPage = () => {
   return (

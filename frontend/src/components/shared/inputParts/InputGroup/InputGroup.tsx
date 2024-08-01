@@ -2,7 +2,7 @@ import styles from './InputGroup.module.css';
 import clsx from 'clsx';
 import { FC, ReactNode } from 'react';
 import { InputSize } from '@/components/ui/inputs/Input/Input.tsx';
-import { InputGroupContext, useInputGroup } from '@/hooks/useInputGroup';
+import { InputGroupContext, useInputGroup } from '@/hooks/useInputGroup.ts';
 
 type InputGroupProps = {
   children?: ReactNode;
