@@ -1,17 +1,15 @@
+import { InputGroup } from '@/components/ui/inputs/InputGroup/InputGroup.tsx';
 import { Input } from '@/components/ui/inputs/Input/Input.tsx';
-import { FormInput } from '@/components/ui/inputs/FormInput/FormInput.tsx';
+import { InputAddon } from '@/components/ui/inputs/InputAddon/InputAddon.tsx';
 
 export const SignInPage = () => {
   return (
     <>
-      <Input
-        placeholder={'Введите ваше имя'}
-        title={'Тест'}
-        startContent={<div>Поиск</div>}
-        endContent={<div>x</div>}
-        error={'123'}
-      />
-      <FormInput placeholder={'123'} error={'Неверный email'} />
+      <InputGroup>
+        <InputAddon location={'left'}>123</InputAddon>
+        <Input />
+        <InputAddon location={'right'}>123</InputAddon>
+      </InputGroup>
     </>
   );
 };

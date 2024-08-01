@@ -1,29 +1,58 @@
-.input{
-    border: none;
+.filled, .underlined{
     width: 100%;
-    background-color: var(--color_white);
+    border: none;
+    display: flex;
+    align-items: center;
 }
 
-.input:focus{
+.filled:focus, .underlined:focus{
     outline: none;
 }
 
-.input::placeholder{
+.filled::placeholder, .underlined::placeholder{
     color: var(--color_grey_dark);
 }
 
-.input_block{
-    height: 60px;
-    width: 100%;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    box-shadow: var(--block_shadow);
-    cursor: text;
-    background-color: var(--color_white);
+.filled{
+    padding: 0 15px;
     border: 1px solid var(--color_grey);
+    border-radius: 20px;
+    box-shadow: var(--block_shadow);
+    background-color: var(--color_white);
 }
+
+.underlined{
+    border-bottom: 3px solid var(--color_black);
+}
+
+.small{
+    height: var(--input_small_height);
+}
+
+.medium{
+    height: var(--input_medium_height);
+}
+
+.is_have_right_element{
+    padding-right: 60px;
+}
+
+.is_have_left_element{
+    padding-left: 60px;
+}
+
+.is_have_right_addon{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+}
+
+.is_have_left_addon{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left: 0;
+}
+
 
 .input_block_error{
     border: 1px solid var(--color_red_dark);

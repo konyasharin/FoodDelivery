@@ -1,46 +1,37 @@
-import { FC, InputHTMLAttributes, ReactNode, useRef } from 'react';
+import { FC, InputHTMLAttributes, useContext } from 'react';
 import styles from './Input.module.css';
 import clsx from 'clsx';
+import { InputGroupContext } from '@/hooks/useInputGroup.ts';
 
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  endContent?: ReactNode;
-  startContent?: ReactNode;
-  title?: string;
-  wrapperClassName?: string;
-  error?: string;
+type InputVariant = 'filled' | 'underlined';
+export type InputSize = 'small' | 'medium';
+
+type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
+  size?: InputSize;
+  variant?: InputVariant;
 };
 
 export const Input: FC<InputProps> = ({
   className,
-  wrapperClassName,
-  startContent,
-  endContent,
-  title,
-  error,
+  variant = 'filled',
+  size,
   ...attributes
 }) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const context = useContext(InputGroupContext);
+  const finalSize: InputSize = size ?? context?.size ?? 'medium';
   return (
-    <div onClick={() => inputRef.current?.focus()} className={wrapperClassName}>
-      {title && <span className={styles.title}>{title}</span>}
-      <div
-        className={clsx(
-          styles.input_block,
-          className,
-          error && styles.input_block_error,
-        )}
-      >
-        {startContent && (
-          <div className={styles.start_content}>{startContent}</div>
-        )}
-        <input
-          className={clsx('text', styles.input)}
-          ref={inputRef}
-          {...attributes}
-        />
-        {endContent && <div className={styles.end_content}>{endContent}</div>}
-      </div>
-      {error && <div className={clsx(styles.error, 'text_small')}>{error}</div>}
-    </div>
+    <input
+      className={clsx(
+        'text',
+        styles[variant],
+        styles[finalSize],
+        context?.isHaveLeftElement && styles.is_have_left_element,
+        context?.isHaveRightElement && styles.is_have_right_element,
+        context?.isHaveLeftAddon && styles.is_have_left_addon,
+        context?.isHaveRightAddon && styles.is_have_right_addon,
+        className,
+      )}
+      {...attributes}
+    />
   );
 };

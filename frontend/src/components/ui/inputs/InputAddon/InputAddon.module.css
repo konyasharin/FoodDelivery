@@ -1,0 +1,23 @@
+.addon{
+    background-color: var(--color_grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+}
+
+.left{
+    border-radius: 20px 0 0 20px;
+}
+
+.right{
+    border-radius: 0 20px 20px 0;
+}
+
+.small{
+    height: var(--input_small_height);
+}
+
+.medium{
+    height: var(--input_medium_height);
+}

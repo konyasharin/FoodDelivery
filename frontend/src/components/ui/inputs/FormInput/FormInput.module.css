@@ -1,4 +1,4 @@
-.input{
+.filled{
     border: none;
     border-bottom: 3px solid var(--color_black);
     padding: 10px 0;
@@ -10,11 +10,11 @@
     border-bottom: 3px solid var(--color_red_dark);
 }
 
-.input:focus{
+.filled:focus{
     outline: none;
 }
 
-.input::placeholder{
+.filled::placeholder{
     color: var(--color_grey_dark);
 }
 

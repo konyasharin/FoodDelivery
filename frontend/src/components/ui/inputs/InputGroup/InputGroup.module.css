@@ -1,0 +1,15 @@
+.input_group{
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: end;
+    position: relative;
+}
+
+.small{
+    height: var(--input_small_height);
+}
+
+.medium{
+    height: var(--input_medium_height);
+}
