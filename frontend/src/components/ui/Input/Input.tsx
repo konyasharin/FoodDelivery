@@ -9,12 +9,14 @@ export type InputSize = 'small' | 'medium';
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
   size?: InputSize;
   variant?: InputVariant;
+  isError?: boolean;
 };
 
 export const Input: FC<InputProps> = ({
   className,
   variant = 'filled',
   size,
+  isError,
   ...attributes
 }) => {
   const context = useContext(InputGroupContext);
@@ -25,6 +27,7 @@ export const Input: FC<InputProps> = ({
         'text',
         styles[variant],
         styles[finalSize],
+        isError && styles.error,
         context?.isHaveLeftElement && styles.is_have_left_element,
         context?.isHaveRightElement && styles.is_have_right_element,
         context?.isHaveLeftAddon && styles.is_have_left_addon,

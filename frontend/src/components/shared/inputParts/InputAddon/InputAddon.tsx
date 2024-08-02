@@ -18,12 +18,7 @@ export const InputAddon: FC<InputAddonProps> = props => {
   }, []);
   return (
     <div
-      className={clsx(
-        props.className,
-        styles.addon,
-        styles[props.location],
-        styles[context?.size ?? 'medium'],
-      )}
+      className={clsx(props.className, styles.addon, styles[props.location])}
     >
       {props.children}
     </div>

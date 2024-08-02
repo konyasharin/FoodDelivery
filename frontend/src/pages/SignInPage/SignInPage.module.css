@@ -1,0 +1,28 @@
+.input_block:first-child{
+    margin-bottom: 30px;
+}
+
+.input_block:last-child{
+    margin-bottom: 20px;
+}
+
+.default_button{
+    font-size: 24px;
+    text-transform: none;
+    font-weight: 400;
+}
+
+.forget_password{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.submit{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.to_registration{
+    margin: 0 auto;
+}

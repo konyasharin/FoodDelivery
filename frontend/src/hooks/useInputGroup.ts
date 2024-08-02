@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction, useState } from 'react';
-import { InputSize } from '@/components/ui/inputs/Input/Input.tsx';
+import { InputSize } from '@/components/ui/Input/Input.tsx';
 
 type InputGroupContextType = {
   size: InputSize;
