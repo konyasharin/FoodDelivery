@@ -1,4 +1,4 @@
-import { FC, InputHTMLAttributes, useContext } from 'react';
+import { forwardRef, InputHTMLAttributes, useContext } from 'react';
 import styles from './Input.module.css';
 import clsx from 'clsx';
 import { InputGroupContext } from '@/hooks/useInputGroup.ts';
@@ -12,29 +12,26 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> & {
   isError?: boolean;
 };
 
-export const Input: FC<InputProps> = ({
-  className,
-  variant = 'filled',
-  size,
-  isError,
-  ...attributes
-}) => {
-  const context = useContext(InputGroupContext);
-  const finalSize: InputSize = size ?? context?.size ?? 'medium';
-  return (
-    <input
-      className={clsx(
-        'text',
-        styles[variant],
-        styles[finalSize],
-        isError && styles.error,
-        context?.isHaveLeftElement && styles.is_have_left_element,
-        context?.isHaveRightElement && styles.is_have_right_element,
-        context?.isHaveLeftAddon && styles.is_have_left_addon,
-        context?.isHaveRightAddon && styles.is_have_right_addon,
-        className,
-      )}
-      {...attributes}
-    />
-  );
-};
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, variant = 'filled', size, isError, ...attributes }, ref) => {
+    const context = useContext(InputGroupContext);
+    const finalSize: InputSize = size ?? context?.size ?? 'medium';
+    return (
+      <input
+        className={clsx(
+          'text',
+          styles[variant],
+          styles[finalSize],
+          isError && styles.error,
+          context?.isHaveLeftElement && styles.is_have_left_element,
+          context?.isHaveRightElement && styles.is_have_right_element,
+          context?.isHaveLeftAddon && styles.is_have_left_addon,
+          context?.isHaveRightAddon && styles.is_have_right_addon,
+          className,
+        )}
+        ref={ref}
+        {...attributes}
+      />
+    );
+  },
+);

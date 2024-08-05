@@ -1,20 +1,23 @@
-import { FC, ReactNode } from 'react';
+import { FC, FormHTMLAttributes } from 'react';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
 import styles from './Form.module.css';
 import clsx from 'clsx';
 
-type FormProps = {
+type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   title: string;
-  className?: string;
-  children?: ReactNode;
 };
 
-export const Form: FC<FormProps> = props => {
+export const Form: FC<FormProps> = ({
+  className,
+  children,
+  title,
+  ...attributes
+}) => {
   return (
-    <Wrapper className={clsx(props.className, styles.wrapper)}>
-      <form onSubmit={e => e.preventDefault()}>
-        <h2>{props.title}</h2>
-        {props.children}
+    <Wrapper className={clsx(className, styles.wrapper)}>
+      <form {...attributes}>
+        <h2>{title}</h2>
+        {children}
       </form>
     </Wrapper>
   );
