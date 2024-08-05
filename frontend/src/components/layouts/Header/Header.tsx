@@ -13,7 +13,7 @@ import {
   PRODUCTS,
   PROMOTIONS,
   SIGN_IN,
-} from '@/shared/routes/routes.ts';
+} from '@/shared/constants/routes.ts';
 import { HashLink } from 'react-router-hash-link';
 import { useCart } from '@/hooks/useCart.ts';
 

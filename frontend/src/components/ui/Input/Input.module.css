@@ -44,36 +44,13 @@
 .is_have_right_addon{
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    border-right: 0;
 }
 
 .is_have_left_addon{
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    border-left: 0;
-}
-
-
-.input_block_error{
-    border: 1px solid var(--color_red_dark);
-}
-
-.title{
-    cursor: default;
-    display: block;
-    margin-bottom: 10px;
-    color: var(--color_black);
 }
 
 .error{
-    color: var(--color_red_dark);
-    margin-top: 10px;
-}
-
-.start_content{
-    margin-right: 20px;
-}
-
-.end_content{
-    margin-left: 20px;
+    border-color: var(--color_red_dark);
 }

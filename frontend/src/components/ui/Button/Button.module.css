@@ -3,6 +3,7 @@
     cursor: pointer;
     text-transform: uppercase;
     transition: 0.1s all;
+    display: block;
 }
 
 .button:hover{
