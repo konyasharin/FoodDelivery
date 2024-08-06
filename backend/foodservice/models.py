@@ -1,20 +1,27 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import CharField, TextField, PositiveIntegerField, ImageField
 
 
-class Car(models.Model):
-    brand = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-    rent_deposit = models.DecimalField(max_digits=10, decimal_places=2)
-    car_class = models.CharField(max_length=50)
-    drive_unit = models.CharField(max_length=50)
-    fuel_type = models.CharField(max_length=50)
-    year = models.IntegerField()
-    engine_power = models.IntegerField()
-    transmission = models.CharField(max_length=50)
-    description = models.TextField()
-    car_number = models.CharField(max_length=50)
-    car_photo_url = models.URLField()
-    car_status = models.CharField(max_length=50)
+class Product(models.Model):
+    """
+    Модель Продуктов
+    """
+    title = CharField(max_length=40, verbose_name="title", null=False)
+    category = CharField(max_length=128, verbose_name="category", null=False)
+    description = TextField(verbose_name="description", null=False, max_length=150)
+    product_amount = PositiveIntegerField(verbose_name="product_amount",
+                                          null=False,
+                                          validators=[MinValueValidator(1)])
+    image = ImageField(upload_to="product_photos", verbose_name="image", null=False)
+    price = PositiveIntegerField(verbose_name="price",
+                                 null=False,
+                                 validators=[MinValueValidator(1), MaxValueValidator(9999)])
+
+    class Meta:
+        db_table = "Product"
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
 
     def __str__(self):
-        return f"{self.brand} {self.model}"
+        return self.title
