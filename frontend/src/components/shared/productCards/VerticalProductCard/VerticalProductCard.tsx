@@ -4,7 +4,7 @@ import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
 import { Counter } from '@/components/shared/Counter/Counter.tsx';
 import styles from './VerticalProductCard.module.css';
 import clsx from 'clsx';
-import { CounterType } from '@/shared/types/CounterType.ts';
+import { Counter as CounterType } from '@/shared/types/Counter.ts';
 
 export const VerticalProductCard: FC<
   ProductCardProps & { counter: CounterType }

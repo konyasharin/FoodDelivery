@@ -21,7 +21,7 @@ export const useTimer = (options?: UseTimerOptions) => {
     min: options?.minTime ? (options.minTime >= 0 ? options.minTime : 0) : 0,
     max: options?.maxTime ?? Number.POSITIVE_INFINITY,
   });
-  const [now, setNow] = useState(Date.now);
+  const [now, setNow] = useState(Date.now());
   const [startAt, setStartAt] = useState<number | null>(null);
   const [initialTime, setInitialTime] = useState(initialValue ?? 0);
   const timeFromStart = now - (startAt ?? now);

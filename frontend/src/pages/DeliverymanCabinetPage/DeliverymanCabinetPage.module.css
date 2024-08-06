@@ -1,0 +1,14 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.block{
+    display: flex;
+    flex-direction: column;
+    width: 539px;
+}
+
+.block h4{
+    margin-bottom: 20px;
+}

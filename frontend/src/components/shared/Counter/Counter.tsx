@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Counter.module.css';
 import clsx from 'clsx';
-import { CounterType } from '@/shared/types/CounterType.ts';
+import { Counter as CounterType } from '@/shared/types/Counter.ts';
 
 export const Counter: React.FC<CounterType> = props => {
   return (
