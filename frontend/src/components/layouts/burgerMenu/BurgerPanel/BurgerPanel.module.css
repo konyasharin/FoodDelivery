@@ -19,3 +19,12 @@
 .panel_disable{
     left: -390px;
 }
+
+.close_button{
+    margin-bottom: 50px;
+}
+
+.guard_text_link{
+    color: var(--color_black);
+    text-decoration: none;
+}

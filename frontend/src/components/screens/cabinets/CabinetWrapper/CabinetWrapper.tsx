@@ -1,12 +1,12 @@
 import { FC, ReactNode } from 'react';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
-import styles from './EmployeeCabinetLayout.module.css';
+import styles from './CabinetWrapper.module.css';
 
-type EmployeeCabinetLayoutProps = {
+type CabinetWrapperProps = {
   children?: ReactNode;
 };
 
-export const EmployeeCabinetLayout: FC<EmployeeCabinetLayoutProps> = props => {
+export const CabinetWrapper: FC<CabinetWrapperProps> = props => {
   return (
     <section className={styles.cabinet}>
       <h2>Кабинет работника</h2>

@@ -5,4 +5,8 @@
 
 .cabinet .wrapper{
     padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 20px;
 }
