@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from './slices/cartSlice.ts';
 import promotionsReducer from './slices/promotionsSlice.ts';
+import userReducer from './slices/userSlice.ts';
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
     promotions: promotionsReducer,
+    user: userReducer,
   },
 });
 

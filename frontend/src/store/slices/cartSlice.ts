@@ -1,12 +1,12 @@
-import { ProductType } from '@/shared/types/ProductType.ts';
+import { Product } from '@/shared/types/Product.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import productImg from '@/assets/product.png';
 
-type CartStateType = {
-  products: (ProductType & { count: number })[];
+type CartState = {
+  products: (Product & { count: number })[];
 };
 
-const initialState: CartStateType = {
+const initialState: CartState = {
   products: [
     {
       id: 0,
@@ -26,7 +26,7 @@ export const cartSlice = createSlice({
   reducers: {
     setCartProduct: (
       state,
-      action: PayloadAction<ProductType & { count: number }>,
+      action: PayloadAction<Product & { count: number }>,
     ) => {
       const productIsExists =
         state.products.find(product => product.id === action.payload.id) !=

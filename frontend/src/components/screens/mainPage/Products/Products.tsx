@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/Button/Button.tsx';
 import { useSelect } from '@/hooks/useSelect.ts';
 import { VerticalProductCard } from '@/components/shared/productCards/VerticalProductCard/VerticalProductCard.tsx';
 import productImg from '@/assets/product.png';
-import { ProductType } from '@/shared/types/ProductType.ts';
+import { Product } from '@/shared/types/Product.ts';
 import { useCart } from '@/hooks/useCart.ts';
 
 export const Products = () => {
@@ -16,7 +16,7 @@ export const Products = () => {
     'Обед',
     'Ужин',
   ];
-  const products: ProductType[] = [
+  const products: Product[] = [
     {
       id: 0,
       title: 'Мороженое "Клубничный взрыв"',

@@ -1,14 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store.ts';
 import { createCounter } from '@/utils/helpers/counter/createCounter.ts';
-import { ProductType } from '@/shared/types/ProductType.ts';
+import { Product } from '@/shared/types/Product.ts';
 import { setCartProduct } from '@/store/slices/cartSlice.ts';
-import {
-  decrementValidate,
-  incrementValidate,
-} from '@/utils/helpers/counter/validate.ts';
+import { counterValidate } from '@/utils/helpers/counter/counterValidate.ts';
 import { useEffect, useState } from 'react';
-import { CounterType } from '@/shared/types/CounterType.ts';
+import { Counter } from '@/shared/types/Counter.ts';
 
 export const useCart = () => {
   const cart = useSelector((state: RootState) => state.cart);
@@ -24,7 +21,7 @@ export const useCart = () => {
     setPrice(getPrice());
   }, [cart]);
 
-  const createCounterHandle = (product: ProductType): CounterType => {
+  const createCounterHandle = (product: Product): Counter => {
     const count =
       cart.products.find(cartProduct => cartProduct.id === product.id)?.count ??
       0;
@@ -38,7 +35,7 @@ export const useCart = () => {
         dispatch(
           setCartProduct({
             ...product,
-            count: incrementValidate(value, 1, max),
+            count: counterValidate(value + 1, min, max),
           }),
         );
       },
@@ -46,7 +43,7 @@ export const useCart = () => {
         dispatch(
           setCartProduct({
             ...product,
-            count: decrementValidate(value, 1, min),
+            count: counterValidate(value - 1, min, max),
           }),
         );
       },

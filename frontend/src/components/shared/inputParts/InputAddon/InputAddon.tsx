@@ -2,7 +2,7 @@ import { InputGroupInnerLocation } from '@/components/shared/inputParts/types/In
 import { FC, ReactNode, useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './InputAddon.module.css';
-import { InputGroupContext } from '@/hooks/useInputGroup.ts';
+import { InputGroupContext } from '@/components/shared/inputParts/InputGroup/useInputGroup.ts';
 
 type InputAddonProps = {
   location: InputGroupInnerLocation;

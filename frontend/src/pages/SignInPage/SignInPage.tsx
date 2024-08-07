@@ -28,7 +28,6 @@ export const SignInPage = () => {
   const onSubmit: SubmitHandler<SignInForm> = data => {
     console.log(data);
   };
-
   return (
     <Form title={'Вход'} onSubmit={handleSubmit(onSubmit)}>
       <div>

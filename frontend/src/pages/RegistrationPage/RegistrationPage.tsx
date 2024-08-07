@@ -35,40 +35,42 @@ export const RegistrationPage = () => {
   };
   return (
     <Form title={'Регистрация'} onSubmit={handleSubmit(onSubmit)}>
-      <FormInput
-        placeholder={'Электронная почта'}
-        className={styles.input}
-        error={errors.email?.message}
-        {...register('email', {
-          required: EMAIL_IS_REQUIRED,
-          pattern: { value: EMAIL_PATTERN, message: EMAIL_PATTERN_INCORRECT },
-        })}
-      />
-      <FormInput
-        placeholder={'Пароль'}
-        className={styles.input}
-        error={errors.password?.message}
-        type={'password'}
-        {...register('password', {
-          required: PASSWORD_IS_REQUIRED,
-          maxLength: {
-            value: MAX_PASSWORD_LENGTH,
-            message: PASSWORD_LENGTH_MORE_MAX,
-          },
-        })}
-      />
-      <FormInput
-        placeholder={'Повторите пароль'}
-        className={styles.input}
-        error={errors.repeatPassword?.message}
-        type={'password'}
-        {...register('repeatPassword', {
-          required: 'Введите повторно пароль',
-          validate: value => {
-            if (value != getValues().password) return 'Пароли не совпадают';
-          },
-        })}
-      />
+      <div>
+        <FormInput
+          placeholder={'Электронная почта'}
+          className={styles.input}
+          error={errors.email?.message}
+          {...register('email', {
+            required: EMAIL_IS_REQUIRED,
+            pattern: { value: EMAIL_PATTERN, message: EMAIL_PATTERN_INCORRECT },
+          })}
+        />
+        <FormInput
+          placeholder={'Пароль'}
+          className={styles.input}
+          error={errors.password?.message}
+          type={'password'}
+          {...register('password', {
+            required: PASSWORD_IS_REQUIRED,
+            maxLength: {
+              value: MAX_PASSWORD_LENGTH,
+              message: PASSWORD_LENGTH_MORE_MAX,
+            },
+          })}
+        />
+        <FormInput
+          placeholder={'Повторите пароль'}
+          className={styles.input}
+          error={errors.repeatPassword?.message}
+          type={'password'}
+          {...register('repeatPassword', {
+            required: 'Введите повторно пароль',
+            validate: value => {
+              if (value != getValues().password) return 'Пароли не совпадают';
+            },
+          })}
+        />
+      </div>
       <Button type={'submit'} variant={'primary'} className={styles.button}>
         Зарегистрироваться
       </Button>

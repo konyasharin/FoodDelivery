@@ -1,6 +1,6 @@
-import { ProductType } from '@/shared/types/ProductType.ts';
+import { Product } from '@/shared/types/Product.ts';
 
 export type ProductCardProps = {
-  product: ProductType;
+  product: Product;
   className?: string;
 };

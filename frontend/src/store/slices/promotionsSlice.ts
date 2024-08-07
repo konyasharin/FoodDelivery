@@ -1,12 +1,12 @@
-import { PromotionType } from '@/shared/types/PromotionType.ts';
+import { Promotion } from '@/shared/types/Promotion.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import productImg from '@/assets/product.png';
 
-type PromotionsStateType = {
-  promotionsList: PromotionType[];
+type PromotionsState = {
+  promotionsList: Promotion[];
 };
 
-const initialState: PromotionsStateType = {
+const initialState: PromotionsState = {
   promotionsList: [
     {
       id: 0,
@@ -31,7 +31,7 @@ const promotionsSlice = createSlice({
   reducers: {
     setPromotionActive: (
       state,
-      action: PayloadAction<Pick<PromotionType, 'id'>>,
+      action: PayloadAction<Pick<Promotion, 'id'>>,
     ) => {
       state.promotionsList.map(promotion => {
         promotion.isActive = promotion.id === action.payload.id;
