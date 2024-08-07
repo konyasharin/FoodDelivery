@@ -5,7 +5,7 @@ import { InputSize } from '@/components/ui/Input/Input.tsx';
 import {
   InputGroupContext,
   useInputGroup,
-} from '@/components/shared/inputParts/InputGroup/useInputGroup.ts';
+} from '@/components/shared/inputs/InputGroup/useInputGroup.ts';
 
 type InputGroupProps = {
   children?: ReactNode;

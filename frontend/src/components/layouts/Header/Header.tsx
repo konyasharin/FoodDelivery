@@ -65,7 +65,7 @@ export const Header = () => {
             variant={price > 0 ? 'primary' : 'dash'}
             to={BASKET}
           >
-            <BasketIcon size={36} />
+            <BasketIcon />
             <span className={'text_bold'}>{price}₽</span>
           </Button>
         </Container>

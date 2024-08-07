@@ -1,0 +1,7 @@
+.block{
+    width: 269px;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}

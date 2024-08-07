@@ -1,0 +1,14 @@
+.blocks{
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.content{
+    width: 851px;
+    padding: 50px 30px;
+}
+
+.admin h2{
+    text-align: center;
+}

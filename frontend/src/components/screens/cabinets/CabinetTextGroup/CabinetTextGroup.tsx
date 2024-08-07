@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import styles from './CabinetTextGroup.module.css';
 
 type CabinetGroupProps = {
   title: string;
@@ -8,7 +7,7 @@ type CabinetGroupProps = {
 
 export const CabinetTextGroup: FC<CabinetGroupProps> = props => {
   return (
-    <div className={styles.text_group}>
+    <div>
       <span className={'text_bold'}>{`${props.title}: `}</span>
       <span className={'text'}>{props.content}</span>
     </div>

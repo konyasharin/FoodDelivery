@@ -1,0 +1,49 @@
+.block{
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.block:last-child{
+    margin-bottom: 0;
+}
+
+.block_disabled{
+    background-color: transparent;
+}
+
+.block_active{
+    background-color: #FFF1BE;
+}
+
+.icon{
+    margin-right: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+.icon svg{
+    width: 100%;
+    height: 100%;
+}
+
+.block_active .icon svg{
+    stroke: var(--color_orange);
+    fill: var(--color_orange);
+}
+
+.block_disabled .icon svg{
+    stroke: var(--color_grey_dark);
+    fill: var(--color_grey_dark);
+}
+
+.block_active .text{
+    color: var(--color_orange);
+}
+
+.block_disabled .text{
+    color: var(--color_black);
+}

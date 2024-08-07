@@ -1,5 +1,5 @@
 import { Input } from '@/components/ui/Input/Input.tsx';
-import { ErrorBlock } from '@/components/shared/ErrorBlock/ErrorBlock.tsx';
+import { ErrorBlock } from '@/components/shared/errors/ErrorBlock/ErrorBlock.tsx';
 import { forwardRef, InputHTMLAttributes } from 'react';
 
 export type FormInputProps = Omit<

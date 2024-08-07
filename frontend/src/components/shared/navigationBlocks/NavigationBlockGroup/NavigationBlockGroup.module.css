@@ -1,0 +1,15 @@
+.group{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    color: var(--color_grey_dark);
+    margin-bottom: 20px;
+}
+
+.children{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

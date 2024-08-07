@@ -66,6 +66,13 @@ h4{
     font-size: 28px;
 }
 
+svg{
+    height: 50px;
+    width: 50px;
+    stroke: var(--color_black);
+    fill: var(--color_black);
+}
+
 span, button, .text, .text_bold{
     font-size: 24px;
 }

@@ -5,8 +5,8 @@ import { CabinetTextGroup } from '@/components/screens/cabinets/CabinetTextGroup
 import { CabinetWrapper } from '@/components/screens/cabinets/CabinetWrapper/CabinetWrapper.tsx';
 import { CabinetColumn } from '@/components/screens/cabinets/CabinetColumn/CabinetColumn.tsx';
 import { Button } from '@/components/ui/Button/Button.tsx';
-import { CabinetTextGroupsWrapper } from '@/components/screens/cabinets/CabinetTextGroupsWrapper/CabinetTextGroupsWrapperProps.tsx';
 import styles from './DeliverymanCabinetPage.module.css';
+import { CabinetTextGroups } from '@/components/screens/cabinets/CabinetTextGroups/CabinetTextGroups.tsx';
 
 export const DeliverymanCabinetPage = () => {
   return (
@@ -17,19 +17,21 @@ export const DeliverymanCabinetPage = () => {
             <CabinetTextGroup title={'Должность'} content={'Доставщик'} />
           </CabinetBlock>
           <CabinetBlock title={'Основная информация'}>
-            <CabinetTextGroupsWrapper>
+            <CabinetTextGroups>
               <CabinetTextGroup title={'Должность'} content={'Доставщик'} />
               <CabinetTextGroup title={'Должность'} content={'Доставщик'} />
-            </CabinetTextGroupsWrapper>
+            </CabinetTextGroups>
           </CabinetBlock>
         </CabinetColumn>
         <CabinetColumn>
           <CabinetBlock title={'Основная информация правая'}>
-            <CabinetTextGroupsWrapper>
+            <CabinetTextGroups>
               <CabinetTextGroup title={'Должность'} content={'Доставщик'} />
               <CabinetTextGroup title={'Должность'} content={'Доставщик'} />
-            </CabinetTextGroupsWrapper>
-            <Button variant={'primary'} className={styles.button}>Завершить заказ</Button>
+            </CabinetTextGroups>
+            <Button variant={'primary'} className={styles.button}>
+              Завершить заказ
+            </Button>
           </CabinetBlock>
         </CabinetColumn>
       </CabinetWrapper>

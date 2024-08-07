@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store/store.ts';
 import {
+  ADMIN,
   COOK_CABINET,
   DELIVERYMAN_CABINET,
   MAIN,
@@ -60,6 +61,15 @@ export const BurgerPanel: React.FC<BurgerPanelProps> = props => {
           onClick={() => props.setIsActive(false)}
         >
           Кабинет работника
+        </Link>
+      </VisibilityGuard>
+      <VisibilityGuard permittedRoles={[ROLES.ADMIN]}>
+        <Link
+          to={ADMIN}
+          className={clsx('text_upper', styles.guard_text_link)}
+          onClick={() => props.setIsActive(false)}
+        >
+          Панель администратора
         </Link>
       </VisibilityGuard>
     </div>
