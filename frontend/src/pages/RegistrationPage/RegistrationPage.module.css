@@ -1,0 +1,15 @@
+.input{
+    margin-bottom: 30px;
+}
+
+.input:last-child{
+    margin-bottom: 50px;
+}
+
+.button{
+    width: 100%;
+}
+
+.to_sign_in{
+    margin: 30px auto 0;
+}

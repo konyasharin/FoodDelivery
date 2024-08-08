@@ -1,0 +1,22 @@
+.input_block:first-child{
+    margin-bottom: 30px;
+}
+
+.input_block:last-child{
+    margin-bottom: 20px;
+}
+
+.forget_password{
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.submit{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.to_registration{
+    margin: 0 auto;
+}

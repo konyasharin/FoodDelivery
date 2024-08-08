@@ -1,18 +1,12 @@
 #backend
-/Backend/FoodDelivery/FoodDelivery.API/*.env
-/Backend/*.vs
-/Backend/FoodDelivery/bin
-/backend/FoodDelivery/obj
-/backend/FoodDelivery/*.idea
-/backend/FoodDelivery/FoodDelivery.API/bin
-/backend/FoodDelivery/FoodDelivery.API/obj
-/backend/FoodDelivery/FoodDelivery.Core/bin
-/backend/FoodDelivery/FoodDelivery.Core/obj
-/backend/FoodDelivery/FoodDelivery.DataAccess/bin
-/backend/FoodDelivery/FoodDelivery.DataAccess/obj
+/backend/Lib
+/backend/Scripts
+/backend/*.cfg
+
+#all
+*.env
 
 #frontend
-/frontend/*.env
 # Logs
 /frontend/logs
 /frontend/*.log
