@@ -21,7 +21,7 @@ from django.urls import path, re_path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from foodservice.views import ProductCreateView, ProductListView, ProductDeleteView, ProductUpdateView, \
-    ProductDetailsByIdView, ProductListByCategoryView
+    ProductDetailsByIdView, ProductListByCategoryView, ProductAmountByIdView, MissingProductCountView, ProductCountView
 from rest_framework import permissions
 
 schema_view = get_schema_view(
@@ -49,6 +49,11 @@ urlpatterns = [
     path('api/v1/product/<int:pk>/details/', ProductDetailsByIdView.as_view(), name='product-details-by-id'),
     path('api/v1/products/category/<str:category>/', ProductListByCategoryView.as_view(),
          name='product-list-by-category'),
+    path('api/v1/product/<int:pk>/product_amount_details/', ProductAmountByIdView.as_view(),
+         name='product-amount-by-id'),
+    path('api/v1/product/product_count/', ProductCountView.as_view(), name='product-count'),
+    path('api/v1/product/missing_product_count/', MissingProductCountView.as_view(),
+         name='missing-product-count'),
 ]
 
 if settings.DEBUG:

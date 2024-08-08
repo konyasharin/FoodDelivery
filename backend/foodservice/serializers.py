@@ -6,6 +6,7 @@ class BaseProductSerializer(serializers.ModelSerializer):
     """
     Класс для сериализации данных модели Продуктов
     """
+
     class Meta:
         model = Product
         fields = ['id', 'title', 'category', 'description', 'image', 'price']
@@ -42,10 +43,15 @@ class ProductSerializer(BaseProductSerializer):
     Класс для сериализации данных модели Продуктов
     с количеством товара
     """
+
     class Meta(BaseProductSerializer.Meta):
         fields = BaseProductSerializer.Meta.fields + ['product_amount']
 
     def validate_product_amount(self, value):
-        if value < 1:
-            raise serializers.ValidationError("Product amount must be at least 1.")
+        if value < 0:
+            raise serializers.ValidationError("Product amount must be at least 0.")
         return value
+
+
+class CountSerializer(serializers.Serializer):
+    count = serializers.IntegerField()

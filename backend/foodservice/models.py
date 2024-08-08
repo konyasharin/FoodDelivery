@@ -1,3 +1,5 @@
+import os
+
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models import CharField, TextField, PositiveIntegerField, ImageField
@@ -12,7 +14,7 @@ class Product(models.Model):
     description = TextField(verbose_name="description", null=False, max_length=150)
     product_amount = PositiveIntegerField(verbose_name="product_amount",
                                           null=False,
-                                          validators=[MinValueValidator(1)])
+                                          validators=[MinValueValidator(0)])
     image = ImageField(upload_to="product_photos", verbose_name="image", null=False)
     price = PositiveIntegerField(verbose_name="price",
                                  null=False,
@@ -25,3 +27,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def delete(self, *args, **kwargs):
+        if self.image:
+            if os.path.isfile(self.image.path):
+                os.remove(self.image.path)
+        super().delete(*args, **kwargs)

@@ -4,6 +4,24 @@ from foodservice.models import Product
 from foodservice.serializers import ProductSerializer, BaseProductSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.response import Response
+
+
+def get_limit_offset_params(request):
+    limit = request.query_params.get('limit', None)
+    offset = request.query_params.get('offset', None)
+
+    try:
+        limit = int(limit) if limit is not None else None
+    except ValueError:
+        limit = None
+
+    try:
+        offset = int(offset) if offset is not None else None
+    except ValueError:
+        offset = None
+
+    return limit, offset
 
 
 class ProductCreateView(CreateAPIView):
@@ -40,20 +58,7 @@ class ProductListView(ListAPIView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        limit = self.request.query_params.get('limit', None)
-        offset = self.request.query_params.get('offset', None)
-
-        if limit is not None:
-            try:
-                limit = int(limit)
-            except ValueError:
-                limit = self.pagination_class.default_limit
-
-        if offset is not None:
-            try:
-                offset = int(offset)
-            except ValueError:
-                offset = self.pagination_class.default_offset
+        limit, offset = get_limit_offset_params(self.request)
 
         if limit is not None and offset is not None:
             return queryset[offset:offset + limit]
@@ -89,6 +94,14 @@ class ProductDetailsByIdView(RetrieveAPIView):
     serializer_class = BaseProductSerializer
 
 
+class ProductAmountByIdView(RetrieveAPIView):
+    """
+    Получение данных продукта с его количеством по id
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+
 class ProductListByCategoryView(ListAPIView):
     """
     Получение списка продуктов по выбранной категории
@@ -98,20 +111,7 @@ class ProductListByCategoryView(ListAPIView):
     def get_queryset(self):
         category = self.kwargs['category']
         queryset = Product.objects.filter(category=category)
-        limit = self.request.query_params.get('limit', None)
-        offset = self.request.query_params.get('offset', None)
-
-        if limit is not None:
-            try:
-                limit = int(limit)
-            except ValueError:
-                limit = self.pagination_class.default_limit
-
-        if offset is not None:
-            try:
-                offset = int(offset)
-            except ValueError:
-                offset = self.pagination_class.default_offset
+        limit, offset = get_limit_offset_params(self.request)
 
         if limit is not None and offset is not None:
             return queryset[offset:offset + limit]
@@ -131,3 +131,25 @@ class ProductListByCategoryView(ListAPIView):
     )
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
+
+
+class ProductCountView(RetrieveAPIView):
+    def get(self, request, *args, **kwargs):
+        product_count = Product.objects.count()
+        return Response({'count': product_count})
+
+    def get_serializer(self, *args, **kwargs):
+        if getattr(self, 'swagger_fake_view', False):
+            return None
+        return super().get_serializer(*args, **kwargs)
+
+
+class MissingProductCountView(RetrieveAPIView):
+    def get(self, request, *args, **kwargs):
+        missing_products_count = Product.objects.filter(product_amount=0).count()
+        return Response({'missing_products': missing_products_count})
+
+    def get_serializer(self, *args, **kwargs):
+        if getattr(self, 'swagger_fake_view', False):
+            return None
+        return super().get_serializer(*args, **kwargs)
