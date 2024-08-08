@@ -2,7 +2,19 @@ import os
 
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from django.db.models import CharField, TextField, PositiveIntegerField, ImageField
+from django.db.models import CharField, TextField, PositiveIntegerField, ImageField, ForeignKey
+
+
+class Category(models.Model):
+    category = CharField(max_length=128, verbose_name="category", null=False)
+
+    class Meta:
+        db_table = "Category"
+        verbose_name = "Category"
+        verbose_name_plural = "Category"
+
+    def __str__(self):
+        return self.category
 
 
 class Product(models.Model):
@@ -10,7 +22,7 @@ class Product(models.Model):
     Модель Продуктов
     """
     title = CharField(max_length=40, verbose_name="title", null=False)
-    category = CharField(max_length=128, verbose_name="category", null=False)
+    category = ForeignKey(Category, on_delete=models.CASCADE, verbose_name="category", related_name="products")
     description = TextField(verbose_name="description", null=False, max_length=150)
     product_amount = PositiveIntegerField(verbose_name="product_amount",
                                           null=False,

@@ -1,10 +1,10 @@
-from foodservice.models import Product
+from foodservice.models import Product, Category
 from rest_framework import serializers
 
 
 class BaseProductSerializer(serializers.ModelSerializer):
     """
-    Класс для сериализации данных модели Продуктов
+    Сеарилизатор данных модели Продуктов
     """
 
     class Meta:
@@ -16,13 +16,6 @@ class BaseProductSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Title must be 40 characters or less.")
         if len(value) == 0:
             raise serializers.ValidationError("Title field must not be empty.")
-        return value
-
-    def validate_category(self, value):
-        if len(value) > 128:
-            raise serializers.ValidationError("Category must be 128 characters or less.")
-        if len(value) == 0:
-            raise serializers.ValidationError("Category field must not be empty.")
         return value
 
     def validate_description(self, value):
@@ -37,10 +30,19 @@ class BaseProductSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Price must be between 1 and 9999.")
         return value
 
+    def create(self, validated_data):
+        return Product.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance
+
 
 class ProductSerializer(BaseProductSerializer):
     """
-    Класс для сериализации данных модели Продуктов
+    Сеарилизатор данных модели Продуктов
     с количеством товара
     """
 
@@ -52,6 +54,27 @@ class ProductSerializer(BaseProductSerializer):
             raise serializers.ValidationError("Product amount must be at least 0.")
         return value
 
+class CategorySerializer(serializers.ModelSerializer):
+    """
+    Сеарилизатор данных модели Категорий
+    """
 
-class CountSerializer(serializers.Serializer):
-    count = serializers.IntegerField()
+    class Meta:
+        model = Category
+        fields = ['category']
+
+    def validate_category(self, value):
+        if len(value) > 128:
+            raise serializers.ValidationError("Category must be 128 characters or less.")
+        if len(value) == 0:
+            raise serializers.ValidationError("Category field must not be empty.")
+        return value
+
+    def create(self, validated_data):
+        return Category.objects.create(**validated_data)
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance

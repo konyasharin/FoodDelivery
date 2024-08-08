@@ -1,7 +1,8 @@
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from foodservice.models import Product
-from foodservice.serializers import ProductSerializer, BaseProductSerializer
+from foodservice.models import Product, Category
+from foodservice.serializers import ProductSerializer, BaseProductSerializer, CategorySerializer
+from rest_framework.filters import SearchFilter
 from rest_framework.generics import CreateAPIView, ListAPIView, DestroyAPIView, UpdateAPIView, RetrieveAPIView
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
@@ -134,6 +135,10 @@ class ProductListByCategoryView(ListAPIView):
 
 
 class ProductCountView(RetrieveAPIView):
+    """
+    Количество всех товаров
+    """
+
     def get(self, request, *args, **kwargs):
         product_count = Product.objects.count()
         return Response({'count': product_count})
@@ -145,6 +150,10 @@ class ProductCountView(RetrieveAPIView):
 
 
 class MissingProductCountView(RetrieveAPIView):
+    """
+    Количество отсутствующих товаров
+    """
+
     def get(self, request, *args, **kwargs):
         missing_products_count = Product.objects.filter(product_amount=0).count()
         return Response({'missing_products': missing_products_count})
@@ -153,3 +162,51 @@ class MissingProductCountView(RetrieveAPIView):
         if getattr(self, 'swagger_fake_view', False):
             return None
         return super().get_serializer(*args, **kwargs)
+
+
+class ProductSearchView(ListAPIView):
+    """
+    Поиск товара по названию и категории
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    filter_backends = [SearchFilter]
+    search_fields = ['title', 'category']
+
+    @swagger_auto_schema(
+        manual_parameters=[
+            openapi.Parameter('limit', openapi.IN_QUERY, description="Limit", type=openapi.TYPE_INTEGER),
+            openapi.Parameter('offset', openapi.IN_QUERY, description="Offset", type=openapi.TYPE_INTEGER),
+        ]
+    )
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        limit, offset = get_limit_offset_params(self.request)
+
+        if limit is not None and offset is not None:
+            return queryset[offset:offset + limit]
+        elif limit is not None:
+            return queryset[:limit]
+        elif offset is not None:
+            return queryset[offset:]
+        else:
+            return queryset
+
+
+class CategoryCreateView(CreateAPIView):
+    """
+    Создание категории
+    """
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
+class CategoryDeleteView(DestroyAPIView):
+    """
+    Удаление категории
+    """
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
