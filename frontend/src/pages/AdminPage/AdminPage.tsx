@@ -6,23 +6,27 @@ import { FlatBasketIcon } from '@/components/icons/FlatBasketIcon.tsx';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
 import { Outlet } from 'react-router-dom';
 import styles from './AdminPage.module.css';
+import { RequireAuth } from '@/components/hocs/RequireAuth/RequireAuth.tsx';
+import { ROLES } from '@/shared/types/UserRole.ts';
 
 export const AdminPage = () => {
   return (
-    <section className={styles.admin}>
-      <h2>Админ-панель</h2>
-      <div className={styles.blocks}>
-        <NavigationBlock>
-          <NavigationBlockGroup title={'Контент'}>
-            <NavigationBlockLink icon={<FlatBasketIcon />} to={EDIT_PRODUCTS}>
-              Продукты
-            </NavigationBlockLink>
-          </NavigationBlockGroup>
-        </NavigationBlock>
-        <Wrapper className={styles.content}>
-          <Outlet />
-        </Wrapper>
-      </div>
-    </section>
+    <RequireAuth permittedRoles={[ROLES.ADMIN]}>
+      <section className={styles.admin}>
+        <h2>Админ-панель</h2>
+        <div className={styles.blocks}>
+          <NavigationBlock>
+            <NavigationBlockGroup title={'Контент'}>
+              <NavigationBlockLink icon={<FlatBasketIcon />} to={EDIT_PRODUCTS}>
+                Продукты
+              </NavigationBlockLink>
+            </NavigationBlockGroup>
+          </NavigationBlock>
+          <Wrapper className={styles.content}>
+            <Outlet />
+          </Wrapper>
+        </div>
+      </section>
+    </RequireAuth>
   );
 };

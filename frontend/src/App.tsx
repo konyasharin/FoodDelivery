@@ -7,7 +7,8 @@ import { Footer } from '@/components/layouts/Footer/Footer.tsx';
 import {
   ADMIN,
   BASKET,
-  DELIVERYMAN_CABINET, EDIT_PRODUCTS,
+  DELIVERYMAN_CABINET,
+  EDIT_PRODUCTS,
   MAIN,
   REGISTRATION,
   SIGN_IN,
@@ -19,7 +20,7 @@ import { SignInPage } from '@/pages/SignInPage/SignInPage.tsx';
 import { RegistrationPage } from '@/pages/RegistrationPage/RegistrationPage.tsx';
 import { DeliverymanCabinetPage } from '@/pages/DeliverymanCabinetPage/DeliverymanCabinetPage.tsx';
 import { AdminPage } from '@/pages/AdminPage/AdminPage.tsx';
-import {EditProductsPage} from "@/pages/EditProductsPage/EditProductsPage.tsx";
+import { EditProductsPage } from '@/pages/EditProductsPage/EditProductsPage.tsx';
 
 function App() {
   return (
