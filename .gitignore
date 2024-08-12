@@ -1,7 +1,7 @@
 #backend
-/backend/Lib
-/backend/Scripts
-/backend/*.cfg
+/backend/backend/Lib
+/backend/backend/Scripts
+/backend/backend/*.cfg
 
 #all
 *.env
