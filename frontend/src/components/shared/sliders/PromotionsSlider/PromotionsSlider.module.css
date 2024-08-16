@@ -11,10 +11,11 @@
 
 .left_block{
     display: flex;
+    width: 520px;
     flex-direction: column;
 }
 
-.left_block span{
+.left_block p{
     margin-top: auto;
     margin-bottom: 30px;
 }

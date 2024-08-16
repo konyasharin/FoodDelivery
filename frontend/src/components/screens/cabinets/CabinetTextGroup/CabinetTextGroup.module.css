@@ -1,7 +1,3 @@
 .text_group{
-    margin-bottom: 10px;
-}
-
-.text_group:last-child {
-    margin-bottom: 0;
+    display: flex;
 }

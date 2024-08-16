@@ -3,6 +3,7 @@ import { FC, ReactNode } from 'react';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
 import styles from './HorizontalProductCard.module.css';
 import clsx from 'clsx';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 type HorizontalProductCardProps = ProductCardProps & {
   rightBottomBlock?: ReactNode;
@@ -14,13 +15,13 @@ export const HorizontalProductCard: FC<HorizontalProductCardProps> = props => {
       <img src={props.product.img} alt="product" className={styles.img} />
       <div className={styles.right_block}>
         <div className={styles.text}>
-          <span className={clsx('text_bold', styles.title)}>
+          <Typography variant={'text_bold'} className={styles.title}>
             {props.product.title}
-          </span>
-          <span className={'text'}>{props.product.description}</span>
+          </Typography>
+          <Typography>{props.product.description}</Typography>
         </div>
         <div className={styles.bottom_block}>
-          <span className={styles.price}>{props.product.price}₽</span>
+          <Typography variant={'h3'}>{props.product.price}₽</Typography>
           {props.rightBottomBlock}
         </div>
       </div>

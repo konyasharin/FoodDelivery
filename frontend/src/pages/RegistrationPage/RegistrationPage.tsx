@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/Button/Button.tsx';
 import styles from './RegistrationPage.module.css';
 import { MAX_PASSWORD_LENGTH } from '@/shared/constants/values.ts';
 import { SIGN_IN } from '@/shared/constants/routes.ts';
-import clsx from 'clsx';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 type RegistrationForm = {
   email: string;
@@ -74,12 +74,8 @@ export const RegistrationPage = () => {
       <Button type={'submit'} variant={'primary'} className={styles.button}>
         Зарегистрироваться
       </Button>
-      <Button
-        to={SIGN_IN}
-        className={clsx('text', styles.to_sign_in)}
-        type={'button'}
-      >
-        Уже есть аккаунт? Войти
+      <Button to={SIGN_IN} className={styles.to_sign_in} type={'button'}>
+        <Typography>Уже есть аккаунт? Войти</Typography>
       </Button>
     </Form>
   );

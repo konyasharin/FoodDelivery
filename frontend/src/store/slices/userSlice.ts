@@ -8,7 +8,7 @@ type UserState = {
 
 const initialState: UserState = {
   userInfo: {
-    role: ROLES.DELIVERYMAN,
+    role: ROLES.ADMIN,
   },
 };
 

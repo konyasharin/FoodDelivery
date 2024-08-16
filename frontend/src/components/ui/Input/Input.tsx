@@ -1,7 +1,7 @@
 import { forwardRef, InputHTMLAttributes, useContext } from 'react';
 import styles from './Input.module.css';
 import clsx from 'clsx';
-import { InputGroupContext } from '@/components/shared/inputParts/InputGroup/useInputGroup.ts';
+import { InputGroupContext } from '@/components/shared/inputs/InputGroup/useInputGroup.ts';
 
 type InputVariant = 'filled' | 'underlined';
 export type InputSize = 'small' | 'medium';

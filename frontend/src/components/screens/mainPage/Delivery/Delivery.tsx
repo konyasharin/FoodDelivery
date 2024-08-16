@@ -1,9 +1,10 @@
 import styles from './Delivery.module.css';
 import { DeliveryBlock } from '@/components/screens/mainPage/DeliveryBlock/DeliveryBlock.tsx';
-import computerIcon from '@/assets/computer.svg';
 import { useEffect } from 'react';
 import * as tt from '@tomtom-international/web-sdk-maps';
 import '@tomtom-international/web-sdk-maps/dist/maps.css';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
+import { ComputerIcon } from '@/components/icons/ComputerIcon.tsx';
 
 export const Delivery = () => {
   useEffect(() => {
@@ -24,7 +25,9 @@ export const Delivery = () => {
 
   return (
     <section className={styles.delivery} id={'delivery'}>
-      <h2>Доставка</h2>
+      <Typography tag={'h2'} variant={'h2'}>
+        Доставка
+      </Typography>
       <div className={styles.blocks}>
         <div className={styles.delivery_blocks}>
           <DeliveryBlock
@@ -34,12 +37,12 @@ export const Delivery = () => {
               {
                 title: 'На сайте',
                 description: 'Выберите продукты на сайте и оформите заказ',
-                icon: computerIcon,
+                icon: <ComputerIcon />,
               },
               {
                 title: 'На сайте',
                 description: 'Выберите продукты на сайте и оформите заказ',
-                icon: computerIcon,
+                icon: <ComputerIcon />,
               },
             ]}
           />
@@ -54,13 +57,15 @@ export const Delivery = () => {
                   'Стоимость доставки изменяется в зависимости от спроса\n' +
                   '\n' +
                   'Время работы: 9:00 - 21:00',
-                icon: computerIcon,
+                icon: <ComputerIcon />,
               },
             ]}
           />
         </div>
         <div className={styles.map_block}>
-          <h3>Мы на карте</h3>
+          <Typography tag={'h3'} variant={'h3'}>
+            Мы на карте
+          </Typography>
           <div id={'map-container'} className={styles.map}></div>
         </div>
       </div>

@@ -1,29 +1,28 @@
 import React from 'react';
 import styles from './Counter.module.css';
-import clsx from 'clsx';
 import { Counter as CounterType } from '@/shared/types/Counter.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
+import { Button } from '@/components/ui/Button/Button.tsx';
 
 export const Counter: React.FC<CounterType> = props => {
   return (
     <div className={styles.counter}>
       <div className={styles.inner}>
-        <span
-          onClick={() => {
-            props.onDecrement();
-          }}
-          className={clsx('text_bold', styles.changer)}
+        <Typography
+          onClick={props.onDecrement}
+          variant={'text_bold'}
+          className={styles.changer}
         >
           -
-        </span>
-        <span className={'button'}>{props.value}</span>
-        <span
-          onClick={() => {
-            props.onIncrement();
-          }}
-          className={clsx('text_bold', styles.changer)}
+        </Typography>
+        <Button>{props.value}</Button>
+        <Typography
+          onClick={props.onIncrement}
+          variant={'text_bold'}
+          className={styles.changer}
         >
           +
-        </span>
+        </Typography>
       </div>
     </div>
   );

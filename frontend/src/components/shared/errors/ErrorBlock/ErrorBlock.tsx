@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import clsx from 'clsx';
 import styles from './ErrorBlock.module.css';
-import { Error } from '@/components/shared/Error/Error.tsx';
+import { Error } from '@/components/shared/errors/Error/Error.tsx';
 
 type ErrorBlockProps = {
   error?: string;

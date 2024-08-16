@@ -5,6 +5,7 @@ import { useSelect } from '@/hooks/useSelect.ts';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store/store.ts';
 import { setPromotionActive } from '@/store/slices/promotionsSlice.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 export const PromotionsSlider = () => {
   const promotions = useSelector(
@@ -23,8 +24,12 @@ export const PromotionsSlider = () => {
     >
       <div className={styles.promotion_slider}>
         <div className={styles.left_block}>
-          <h3>{activePromotion.title}</h3>
-          <span className={'text_bold'}>до {activePromotion.endDate}</span>
+          <Typography tag={'h3'} variant={'h3'}>
+            {activePromotion.title}
+          </Typography>
+          <Typography variant={'text_bold'}>
+            до {activePromotion.endDate}
+          </Typography>
           <Button
             variant={activePromotion.isActive ? 'primary' : 'outline'}
             onClick={() => {

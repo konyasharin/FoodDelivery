@@ -4,7 +4,7 @@
     flex-direction: column;
 }
 
-.delivery_block h3{
+.title{
     margin-bottom: 30px;
     color: var(--color_orange);
 }
@@ -13,12 +13,19 @@
     display: flex;
     align-items: start;
     margin-bottom: 20px;
+    gap: 20px;
 }
 
 .content_block:last-child{
     margin-bottom: 0;
 }
 
-.content_block img{
-    margin-right: 20px;
+.description{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.content_block svg{
+    color: var(--color_orange);
 }

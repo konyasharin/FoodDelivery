@@ -16,6 +16,7 @@ import {
 } from '@/shared/constants/routes.ts';
 import { HashLink } from 'react-router-hash-link';
 import { useCart } from '@/hooks/useCart.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 export const Header = () => {
   const [burgerIsActive, setBurgerIsActive] = useState(false);
@@ -40,20 +41,17 @@ export const Header = () => {
         <Container className={styles.content_block}>
           <Burger isActive={burgerIsActive} setIsActive={setBurgerIsActive} />
           <div className={styles.links}>
-            <HashLink to={DELIVERY} className={clsx('text_upper', styles.link)}>
-              Доставка
+            <HashLink to={DELIVERY} className={styles.link}>
+              <Typography variant={'text_upper'}>Доставка</Typography>
             </HashLink>
-            <HashLink
-              to={PROMOTIONS}
-              className={clsx('text_upper', styles.link)}
-            >
-              Акции
+            <HashLink to={PROMOTIONS} className={styles.link}>
+              <Typography variant={'text_upper'}>Акции</Typography>
             </HashLink>
-            <HashLink to={PRODUCTS} className={clsx('text_upper', styles.link)}>
-              Продукты
+            <HashLink to={PRODUCTS} className={styles.link}>
+              <Typography variant={'text_upper'}>Продукты</Typography>
             </HashLink>
-            <Link to={SIGN_IN} className={clsx('text_upper', styles.link)}>
-              Вход
+            <Link to={SIGN_IN} className={styles.link}>
+              <Typography variant={'text_upper'}>Вход</Typography>
             </Link>
           </div>
           <Button
@@ -65,8 +63,8 @@ export const Header = () => {
             variant={price > 0 ? 'primary' : 'dash'}
             to={BASKET}
           >
-            <BasketIcon size={36} />
-            <span className={'text_bold'}>{price}₽</span>
+            <BasketIcon />
+            <Typography variant={'text_bold'}>{price}₽</Typography>
           </Button>
         </Container>
       </header>

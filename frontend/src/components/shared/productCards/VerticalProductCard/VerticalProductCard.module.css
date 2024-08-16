@@ -22,11 +22,6 @@
     margin-bottom: 30px;
 }
 
-.price{
-    font-size: 36px;
-    font-weight: 700;
-}
-
 .bottom_block{
     display: flex;
     justify-content: space-between;

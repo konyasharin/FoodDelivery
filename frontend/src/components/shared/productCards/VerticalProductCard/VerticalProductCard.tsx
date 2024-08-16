@@ -5,6 +5,7 @@ import { Counter } from '@/components/shared/Counter/Counter.tsx';
 import styles from './VerticalProductCard.module.css';
 import clsx from 'clsx';
 import { Counter as CounterType } from '@/shared/types/Counter.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 export const VerticalProductCard: FC<
   ProductCardProps & { counter: CounterType }
@@ -12,14 +13,14 @@ export const VerticalProductCard: FC<
   return (
     <Wrapper className={clsx(styles.card, props.className)}>
       <img src={props.product.img} alt="product" />
-      <div className={clsx('text_bold', styles.title)}>
+      <Typography variant={'text_bold'} className={styles.title}>
         {props.product.title}
-      </div>
-      <div className={clsx('text', styles.description)}>
+      </Typography>
+      <Typography className={styles.description}>
         {props.product.description}
-      </div>
+      </Typography>
       <div className={styles.bottom_block}>
-        <span className={styles.price}>{props.product.price}₽</span>
+        <Typography variant={'h3'}>{props.product.price}₽</Typography>
         <Counter
           value={props.counter.value}
           onIncrement={props.counter.onIncrement}

@@ -1,8 +1,8 @@
 import { FC, ReactNode, useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './InputElement.module.css';
-import { InputGroupInnerLocation } from '@/components/shared/inputParts/types/InputGroupInnerLocation.ts';
-import { InputGroupContext } from '@/components/shared/inputParts/InputGroup/useInputGroup.ts';
+import { InputGroupInnerLocation } from '@/components/shared/inputs/types/InputGroupInnerLocation.ts';
+import { InputGroupContext } from '@/components/shared/inputs/InputGroup/useInputGroup.ts';
 
 type InputElementProps = {
   children?: ReactNode;
