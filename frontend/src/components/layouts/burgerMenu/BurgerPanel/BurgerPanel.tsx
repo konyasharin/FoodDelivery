@@ -15,6 +15,7 @@ import {
   MAIN,
 } from '@/shared/constants/routes.ts';
 import { useClickOutside } from '@/hooks/useClickOutside.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 type BurgerPanelProps = {
   isActive: boolean;
@@ -57,19 +58,19 @@ export const BurgerPanel: React.FC<BurgerPanelProps> = props => {
       <VisibilityGuard permittedRoles={[ROLES.DELIVERYMAN, ROLES.COOK]}>
         <Link
           to={cabinetLink}
-          className={clsx('text_upper', styles.guard_text_link)}
           onClick={() => props.setIsActive(false)}
+          className={styles.guard_text_link}
         >
-          Кабинет работника
+          <Typography variant={'text_upper'}>Кабинет работника</Typography>
         </Link>
       </VisibilityGuard>
       <VisibilityGuard permittedRoles={[ROLES.ADMIN]}>
         <Link
           to={ADMIN}
-          className={clsx('text_upper', styles.guard_text_link)}
           onClick={() => props.setIsActive(false)}
+          className={styles.guard_text_link}
         >
-          Панель администратора
+          <Typography variant={'text_upper'}>Панель администратора</Typography>
         </Link>
       </VisibilityGuard>
     </div>

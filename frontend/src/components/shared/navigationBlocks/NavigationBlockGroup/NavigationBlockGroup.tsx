@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import styles from './NavigationBlockGroup.module.css';
-import clsx from 'clsx';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 type NavigationBlockGroupProps = {
   title: string;
@@ -10,7 +10,9 @@ type NavigationBlockGroupProps = {
 export const NavigationBlockGroup: FC<NavigationBlockGroupProps> = props => {
   return (
     <div className={styles.group}>
-      <div className={clsx('text_upper', styles.title)}>{props.title}</div>
+      <Typography variant={'text_upper'} className={styles.title}>
+        {props.title}
+      </Typography>
       <div className={styles.children}>{props.children}</div>
     </div>
   );

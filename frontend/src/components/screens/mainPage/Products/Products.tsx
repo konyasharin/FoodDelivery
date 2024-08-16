@@ -5,6 +5,7 @@ import { VerticalProductCard } from '@/components/shared/productCards/VerticalPr
 import productImg from '@/assets/product.png';
 import { Product } from '@/shared/types/Product.ts';
 import { useCart } from '@/hooks/useCart.ts';
+import {Typography} from "@/components/ui/Typography/Typography.tsx";
 
 export const Products = () => {
   const categories = [
@@ -30,7 +31,9 @@ export const Products = () => {
   const { createCounterHandle } = useCart();
   return (
     <section className={styles.products} id={'products'}>
-      <h2 className={styles.title}>Продукты</h2>
+      <Typography tag={'h2'} variant={'h2'} className={styles.title}>
+        Продукты
+      </Typography>
       <div className={styles.categories}>
         {...categories.map((category, i) => {
           return (

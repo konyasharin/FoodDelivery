@@ -20,7 +20,9 @@ import { SignInPage } from '@/pages/SignInPage/SignInPage.tsx';
 import { RegistrationPage } from '@/pages/RegistrationPage/RegistrationPage.tsx';
 import { DeliverymanCabinetPage } from '@/pages/DeliverymanCabinetPage/DeliverymanCabinetPage.tsx';
 import { AdminPage } from '@/pages/AdminPage/AdminPage.tsx';
-import { EditProductsPage } from '@/pages/EditProductsPage/EditProductsPage.tsx';
+import { AdminProductsPage } from '@/pages/AdminProductsPage/AdminProductsPage.tsx';
+import { RequireAuth } from '@/components/hocs/RequireAuth/RequireAuth.tsx';
+import { ROLES } from '@/shared/types/UserRole.ts';
 
 function App() {
   return (
@@ -35,10 +37,21 @@ function App() {
             <Route path={REGISTRATION} element={<RegistrationPage />} />
             <Route
               path={DELIVERYMAN_CABINET}
-              element={<DeliverymanCabinetPage />}
+              element={
+                <RequireAuth permittedRoles={[ROLES.DELIVERYMAN]}>
+                  <DeliverymanCabinetPage />
+                </RequireAuth>
+              }
             />
-            <Route path={ADMIN} element={<AdminPage />}>
-              <Route path={EDIT_PRODUCTS} element={<EditProductsPage />} />
+            <Route
+              path={ADMIN}
+              element={
+                <RequireAuth permittedRoles={[ROLES.ADMIN]}>
+                  <AdminPage />
+                </RequireAuth>
+              }
+            >
+              <Route path={EDIT_PRODUCTS} element={<AdminProductsPage />} />
             </Route>
             <Route path={'*'} element={<div>error 404</div>} />
           </Routes>

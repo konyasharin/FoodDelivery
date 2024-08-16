@@ -31,13 +31,11 @@
 }
 
 .block_active .icon svg{
-    stroke: var(--color_orange);
-    fill: var(--color_orange);
+    color: var(--color_orange);
 }
 
 .block_disabled .icon svg{
-    stroke: var(--color_grey_dark);
-    fill: var(--color_grey_dark);
+    color: var(--color_grey_dark);
 }
 
 .block_active .text{

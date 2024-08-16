@@ -1,0 +1,10 @@
+.card{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.title{
+    color: var(--color_grey_dark);
+}

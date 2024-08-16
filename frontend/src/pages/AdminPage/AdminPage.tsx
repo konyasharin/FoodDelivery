@@ -4,29 +4,27 @@ import { NavigationBlockLink } from '@/components/shared/navigationBlocks/Naviga
 import { EDIT_PRODUCTS } from '@/shared/constants/routes.ts';
 import { FlatBasketIcon } from '@/components/icons/FlatBasketIcon.tsx';
 import { Wrapper } from '@/components/shared/Wrapper/Wrapper.tsx';
-import { Outlet } from 'react-router-dom';
+import { useOutlet } from 'react-router-dom';
 import styles from './AdminPage.module.css';
-import { RequireAuth } from '@/components/hocs/RequireAuth/RequireAuth.tsx';
-import { ROLES } from '@/shared/types/UserRole.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 export const AdminPage = () => {
+  const outlet = useOutlet();
   return (
-    <RequireAuth permittedRoles={[ROLES.ADMIN]}>
-      <section className={styles.admin}>
-        <h2>Админ-панель</h2>
-        <div className={styles.blocks}>
-          <NavigationBlock>
-            <NavigationBlockGroup title={'Контент'}>
-              <NavigationBlockLink icon={<FlatBasketIcon />} to={EDIT_PRODUCTS}>
-                Продукты
-              </NavigationBlockLink>
-            </NavigationBlockGroup>
-          </NavigationBlock>
-          <Wrapper className={styles.content}>
-            <Outlet />
-          </Wrapper>
-        </div>
-      </section>
-    </RequireAuth>
+    <section className={styles.admin}>
+      <Typography tag={'h2'} variant={'h2'}>
+        Админ-панель
+      </Typography>
+      <div className={styles.blocks}>
+        <NavigationBlock>
+          <NavigationBlockGroup title={'Контент'}>
+            <NavigationBlockLink icon={<FlatBasketIcon />} to={EDIT_PRODUCTS}>
+              Продукты
+            </NavigationBlockLink>
+          </NavigationBlockGroup>
+        </NavigationBlock>
+        {outlet && <Wrapper className={styles.content}>{outlet}</Wrapper>}
+      </div>
+    </section>
   );
 };

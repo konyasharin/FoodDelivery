@@ -1,7 +1,6 @@
 import { Form } from '@/components/ui/Form/Form.tsx';
 import styles from './SignInPage.module.css';
 import { Button } from '@/components/ui/Button/Button.tsx';
-import clsx from 'clsx';
 import { REGISTRATION } from '@/shared/constants/routes.ts';
 import { FormInput } from '@/components/shared/inputs/FormInput/FormInput.tsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -13,6 +12,7 @@ import {
   PASSWORD_LENGTH_MORE_MAX,
 } from '@/shared/constants/errors.ts';
 import { MAX_PASSWORD_LENGTH } from '@/shared/constants/values.ts';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 type SignInForm = {
   email: string;
@@ -58,22 +58,22 @@ export const SignInPage = () => {
         />
       </div>
       <Button
-        className={clsx('text', styles.forget_password)}
+        className={styles.forget_password}
         variant={'default'}
         type={'button'}
       >
-        Забыли пароль?
+        <Typography>Забыли пароль?</Typography>
       </Button>
       <Button type={'submit'} className={styles.submit} variant={'primary'}>
         Войти
       </Button>
       <Button
-        className={clsx('text', styles.to_registration)}
+        className={styles.to_registration}
         variant={'default'}
         to={REGISTRATION}
         type={'button'}
       >
-        Нет аккаунта? Регистрация
+        <Typography>Нет аккаунта? Регистрация</Typography>
       </Button>
     </Form>
   );

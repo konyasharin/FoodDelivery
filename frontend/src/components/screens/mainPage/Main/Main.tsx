@@ -1,6 +1,7 @@
 import styles from './Main.module.css';
 import { Button } from '@/components/ui/Button/Button.tsx';
 import mainImage from '@/assets/MainImage.png';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 export const Main = () => {
   return (
@@ -8,11 +9,11 @@ export const Main = () => {
       <div className={styles.main_background}></div>
       <div className={styles.main}>
         <div>
-          <h1>
+          <Typography tag={'h1'} variant={'h1'}>
             Всегда
             <br />
             свежая еда
-          </h1>
+          </Typography>
           <Button
             onClick={() => console.log('Заказать еду')}
             variant={'primary'}

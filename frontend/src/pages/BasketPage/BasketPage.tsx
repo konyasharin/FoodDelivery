@@ -4,14 +4,16 @@ import { Counter } from '@/components/shared/Counter/Counter.tsx';
 import { PromotionsSlider } from '@/components/shared/sliders/PromotionsSlider/PromotionsSlider.tsx';
 import { Button } from '@/components/ui/Button/Button.tsx';
 import { useCart } from '@/hooks/useCart.ts';
-import clsx from 'clsx';
+import { Typography } from '@/components/ui/Typography/Typography.tsx';
 
 export const BasketPage = () => {
   const { cart, price, createCounterHandle } = useCart();
 
   return (
     <section className={styles.basket_page}>
-      <h2>Корзина</h2>
+      <Typography tag={'h2'} variant={'h2'}>
+        Корзина
+      </Typography>
       {cart.products.map((product, i) => {
         const counter = createCounterHandle(product);
         return (
@@ -30,9 +32,9 @@ export const BasketPage = () => {
         );
       })}
       {cart.products.length === 0 && (
-        <div className={clsx(styles.cart_empty_block, 'text_small')}>
+        <Typography variant={'text_small'} className={styles.cart_empty_block}>
           Корзина пуста
-        </div>
+        </Typography>
       )}
       <PromotionsSlider />
       <Button
