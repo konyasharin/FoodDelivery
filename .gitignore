@@ -1,7 +1,8 @@
 #backend
-/backend/Lib
-/backend/Scripts
+/backend/backend/Lib
+/backend/backend/Scripts
 /backend/*.cfg
+/backend/*.pyc
 
 #all
 *.env
