@@ -1,0 +1,21 @@
+.block{
+    width: 130px;
+    height: 130px;
+    border: 1px dashed var(--color_grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    color: var(--color_black);
+}
+
+.block svg{
+    width: 36px;
+    height: 36px;
+}
+
+.link{
+    text-decoration: none;
+}

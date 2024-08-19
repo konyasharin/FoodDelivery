@@ -12,13 +12,13 @@ type AdminInfoCardProps = {
 export const AdminInfoCard: FC<AdminInfoCardProps> = props => {
   return (
     <Wrapper className={styles.card}>
-      <div>
+      <div className={styles.top}>
         {props.icon}
         <Typography variant={'text_small'} className={styles.title}>
           {props.title}
         </Typography>
       </div>
-      <Typography>{props.info}</Typography>
+      <Typography variant={'h3'}>{props.info}</Typography>
     </Wrapper>
   );
 };
