@@ -1,10 +1,12 @@
 import { IconProps } from '@/components/icons/types/IconProps.ts';
 import { FC } from 'react';
+import clsx from 'clsx';
+import styles from './Icon.module.css';
 
 export const FlatBasketIcon: FC<IconProps> = ({ className, ...attributes }) => {
   return (
     <svg
-      className={className}
+      className={clsx(className, clsx(styles.icon))}
       width="40.000000"
       height="40.000000"
       viewBox="0 0 40 40"

@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { IconProps } from '@/components/icons/types/IconProps.ts';
+import styles from './Icon.module.css';
+import clsx from 'clsx';
 
 export const CloseIcon: FC<IconProps> = ({ className, ...attributes }) => {
   return (
     <svg
-      className={className}
+      className={clsx(className, styles.icon)}
       width="50.000000"
       height="50.000000"
       viewBox="0 0 50 50"
