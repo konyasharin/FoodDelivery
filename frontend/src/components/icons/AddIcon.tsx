@@ -22,7 +22,7 @@ export const AddIcon: FC<IconProps> = ({ className, ...attributes }) => {
           rx="3.000000"
           width="30.000000"
           height="30.000000"
-          fill="#B9B9B9"
+          fill={'currentColor'}
           fillOpacity="1.000000"
         />
         <rect
@@ -32,7 +32,7 @@ export const AddIcon: FC<IconProps> = ({ className, ...attributes }) => {
           rx="3.000000"
           width="30.000000"
           height="30.000000"
-          stroke="#B9B9B9"
+          stroke={'currentColor'}
           strokeOpacity="1.000000"
           strokeWidth="1.500000"
           strokeLinejoin="round"
